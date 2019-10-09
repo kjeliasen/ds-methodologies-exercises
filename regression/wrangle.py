@@ -2,8 +2,8 @@
 ### regression imports                                                      ###
 ###############################################################################
 
-# import warnings
-# warnings.filterwarnings("ignore")
+import warnings
+warnings.filterwarnings("ignore")
 
 import numpy as np
 # import viz
@@ -174,7 +174,7 @@ SELECT
     customer_id,
     monthly_charges,
     tenure,
-    total_charges
+    cast(total_charges as decimal(11,2)) total_charges
 FROM
     customers
 WHERE
