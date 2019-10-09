@@ -111,6 +111,10 @@ def frame_splain(dataframe, use_name='sample', sample_limit=10):
     print()
     print(f'{header_fancy}{use_name} details{str(dataframe.shape)}{Style.RESET_ALL}')
     print(dataframe.dtypes)
+    print(f'{header_fancy}{use_name} description{str(dataframe.shape)}{Style.RESET_ALL}')
+    print(dataframe.describe())
+    print(f'{header_fancy}{use_name} info{str(dataframe.shape)}{Style.RESET_ALL}')
+    print(dataframe.info())
 
 ###############################################################################
 ### get db url                                                              ###
@@ -120,7 +124,7 @@ def frame_splain(dataframe, use_name='sample', sample_limit=10):
 def get_db_url(user, password, host, database):
     return f'mysql+pymysql://{user}:{password}@{host}/{database}'
 
-employees_url = get_db_url(user=user, password=password, host=host, database=get_database)
+# employees_url = get_db_url(user=user, password=password, host=host, database=get_database)
 
 ###############################################################################
 ###############################################################################
@@ -155,7 +159,22 @@ exercise in a file named wrangle.py.''')
 print_rule('''1. Acquire customer_id, monthly_charges, tenure, and total_charges from 
 telco_churn database for all customers with a 2 year contract.''')
 
+get_database = 'telco_churn'
+telco_url = get_db_url(user=user, password=password, host=host, database=get_database)
+two_year_custs_sql = '''
+SELECT
+    customer_id,
+    monthly_charges,
+    tenure,
+    total_charges
+FROM
+    customers
+WHERE
+    contract_type_id = 3
+'''
 
+custs = pd.read_sql(two_year_custs_sql, telco_url)
+frame_splain(two_year_custs, 'Two-Year Custs')
 
 ###############################################################################
 ###############################################################################
@@ -164,6 +183,7 @@ telco_churn database for all customers with a 2 year contract.''')
 
 print_rule('''2. Walk through the steps above using your new dataframe. You may handle the 
 missing values however you feel is appropriate.''')
+
 
 
 ###############################################################################
@@ -175,4 +195,5 @@ print_rule('''3. End with a python file wrangle.py that contains the function,
 wrangle_telco(), that will acquire the data and return a dataframe cleaned 
 with no missing values.''')
 
+def wrangle_telco
 
