@@ -174,7 +174,7 @@ SELECT
     customer_id,
     monthly_charges,
     tenure,
-    cast(total_charges as decimal(11,2)) total_charges
+    total_charges
 FROM
     customers
 WHERE
@@ -184,6 +184,15 @@ WHERE
 custs = pd.read_sql(two_year_custs_sql, telco_url)
 if __name__ == '__main__':
     frame_splain(custs, 'Two-Year Custs')
+
+### Alternate Select ##########################################################
+# SELECT
+#     customer_id,
+#     monthly_charges,
+#     tenure,
+#     cast(total_charges as decimal(11,2)) total_charges
+###############################################################################
+
 
 ###############################################################################
 ###############################################################################
@@ -197,6 +206,7 @@ missing values however you feel is appropriate.''')
 
 custs.total_charges.replace(r'^\s*$ ', np.nan, regex=True, inplace=True) 
 custs = custs[custs.total_charges != ' ']    
+custs = custs[custs.total_charges != '']    
 custs=custs.astype({'total_charges': float})
 if __name__ == '__main__':
     frame_splain(custs, 'Two Year Custs')
