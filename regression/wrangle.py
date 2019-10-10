@@ -208,6 +208,7 @@ custs.total_charges.replace(r'^\s*$ ', np.nan, regex=True, inplace=True)
 custs = custs[custs.total_charges != ' ']    
 custs = custs[custs.total_charges != '']    
 custs=custs.astype({'total_charges': float})
+custs = custs.set_index('customer_id')
 if __name__ == '__main__':
     frame_splain(custs, 'Two Year Custs')
 
@@ -224,3 +225,9 @@ with no missing values.''')
 def wrangle_telco():
     return custs    
 
+
+# if __name__ == '__main__':
+
+#     do_all_the_things()
+# else:
+#     do_some_of_the_things()
