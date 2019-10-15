@@ -127,5 +127,8 @@ def is_isnot(is_it):
 # value telling you whether the correlation between the model and the tip 
 # value are statistically significant.
 # 
-
+def model_significance(ols_model):
+    r2 = ols_model.rsquared
+    f_pval = ols_model.f_pvalue
+    return r2, f_pval
 
