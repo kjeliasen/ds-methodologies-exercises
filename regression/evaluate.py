@@ -92,7 +92,20 @@ def regression_errors(y, yhat):
 # computes the SSE, MSE & RMSE when yhat is equal to the mean of all y, and 
 # returns the error values (SSE, MSE, and RMSE).
 # 
+def make_baseline(df):
+    # copy dataframe
+    df_baseline = df[['x', 'y']]
+    # compute the overall mean of the y values and add to 'yhat' as our prediction
+    df_baseline['yhat'] = df_baseline['y'].mean()
+    # compute the difference between y and yhat
+    df_baseline['residual'] = df_baseline['yhat'] - df_baseline['y']
+    # square that delta
+    df_baseline['residual^2'] = df_baseline['residual'] ** 2
+    return df_baseline
 
+def baseline_mean_errors(df_baseline):
+    SSE, ESS, TSS, MSE, RMSE = regression_errors(df_baseline.y, df_baseline.yhat)
+    return SSE, ESS, TSS, MSE, RMSE
 
 
 ###############################################################################
@@ -100,7 +113,11 @@ def regression_errors(y, yhat):
 # 7. Write a function, better_than_baseline(SSE), that returns true if your 
 # model performs better than the baseline, otherwise false.
 # 
+def better_than_baseline(sse, blsse):
+    return sse < blsse
 
+def is_isnot(is_it):
+    return 'is' if is_it else 'is not'
 
 
 ###############################################################################
