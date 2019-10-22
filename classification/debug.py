@@ -36,8 +36,8 @@ def frame_splain(df, title='DATAFRAME', topx=local_settings['TOPX'], maxcols=loc
         print(df.shape, '\n')
         print(title.upper(), 'INFO:')
         print(df.info(), '\n')
+        print(title.upper(), 'DESCRIPTION:')
+        print(df.describe().transpose(), '\n')
         if cols <= maxcols:
-            print(title.upper(), 'DESCRIPTION:')
-            print(df.describe(), '\n')
             print(title.upper(), 'HEAD:')
             print(df.head(max_x), '\n')

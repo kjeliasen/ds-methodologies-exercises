@@ -7,6 +7,8 @@ warnings.filterwarnings("ignore")
 
 import numpy as np
 import pandas as pd
+import pandas_profiling as pdspro
+
 
 ###############################################################################
 ### local imports                                                           ###
@@ -59,6 +61,10 @@ def df_df(dataframe, splain=local_settings['SPLAIN']):
     frame_splain(dataframe, splain=splain)
     return dataframe
 
+
+@timeifdebug
+def get_titanic_data(splain=local_settings['SPLAIN']):
+    return sql_df(sql='SELECT * FROM passengers',db='titanic_db', splain=splain)
 
 ###############################################################################
 ### regression functions                                                    ###
