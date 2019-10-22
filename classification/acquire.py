@@ -21,7 +21,7 @@ from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 ###############################################################################
 
 @timeifdebug  # <--- DO NOT RUN ARGS DEBUG HERE! Will pass password info.
-def get_db_url(user, password, host, database):
+def get_db_url(user=user, password=password, host=host, database='employees'):
     '''
     get_db_url(user=user, password=password, host=host, database='zillow')
     RETURNS login url for selected mysql database
@@ -33,13 +33,36 @@ def get_db_url(user, password, host, database):
 ### classification functions                                                ###
 ###############################################################################
 
+@timeifdebug
+def paste_df(splain=local_settings['SPLAIN']):
+    return df_df(pd.read_clipboard(), splain=splain)
 
+
+@timeifdebug
+def excel_df(excel_path, splain=local_settings['SPLAIN']):
+    return df_df(pd.read_excel(excel_path), splain=splain)
+
+
+@timeifdebug
+def google_df(sheet_url, splain=local_settings['SPLAIN']):
+    csv_export_url = sheet_url.replace('/edit#gid=', '/export?format=csv&gid=')
+    return df_df(pd.read_csv(csv_export_url), splain=splain)
+
+
+@timeifdebug
+def sql_df(sql, db, splain=local_settings['SPLAIN']):
+    db_url = get_db_url(database=db)
+    return df_df(pd.read_sql(sql, db_url), splain=splain)
+
+@timeifdebug
+def df_df(dataframe, splain=local_settings['SPLAIN']):
+    frame_splain(dataframe, splain=splain)
+    return dataframe
 
 
 ###############################################################################
 ### regression functions                                                    ###
 ###############################################################################
-
 
 @timeifdebug
 def wrangle_telco():

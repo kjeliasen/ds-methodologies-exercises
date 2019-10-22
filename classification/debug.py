@@ -29,16 +29,15 @@ def timeargsifdebug(fn):
 
 
 def frame_splain(df, title='DATAFRAME', topx=local_settings['TOPX'], maxcols=local_settings['MAXCOLS'], splain=local_settings['SPLAIN']):
-    df_shape = df.shape
-    cols = df_shape[0]
-    max_x = min(topx, df_shape[1])
-    df_desc = df.describe()
-    df_head = df.head(max_x)
-    df_info = df.info()
+    cols = df.shape[1]
+    max_x = min(topx, df.shape[0])
     if splain:
-        print(title, 'shape:\n', df_shape, '\n')
-        print(title, 'info:\n', df_info, '\n')
+        print(title.upper(), 'SHAPE:')
+        print(df.shape, '\n')
+        print(title.upper(), 'INFO:')
+        print(df.info(), '\n')
         if cols <= maxcols:
-            print(title, 'description:\n', df_desc, '\n')
-            print(title, 'head:\n', df_head, '\n')
-        
+            print(title.upper(), 'DESCRIPTION:')
+            print(df.describe(), '\n')
+            print(title.upper(), 'HEAD:')
+            print(df.head(max_x), '\n')
