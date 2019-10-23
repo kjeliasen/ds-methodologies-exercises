@@ -36,35 +36,65 @@ def get_db_url(user=user, password=password, host=host, database='employees'):
 ###############################################################################
 
 @timeifdebug
-def paste_df(splain=local_settings['SPLAIN']):
-    return df_df(pd.read_clipboard(), splain=splain)
+def paste_df(splain=local_settings.splain):
+    return check_df(pd.read_clipboard(), splain=splain)
 
 
 @timeifdebug
-def excel_df(excel_path, splain=local_settings['SPLAIN']):
-    return df_df(pd.read_excel(excel_path), splain=splain)
+def excel_df(excel_path, splain=local_settings.splain):
+    return check_df(pd.read_excel(excel_path), splain=splain)
 
 
 @timeifdebug
-def google_df(sheet_url, splain=local_settings['SPLAIN']):
+def google_df(sheet_url, splain=local_settings.splain):
     csv_export_url = sheet_url.replace('/edit#gid=', '/export?format=csv&gid=')
-    return df_df(pd.read_csv(csv_export_url), splain=splain)
+    return check_df(pd.read_csv(csv_export_url), splain=splain)
 
 
 @timeifdebug
-def sql_df(sql, db, splain=local_settings['SPLAIN']):
+def csv_df(csv, splain=local_settings.splain):
+    csv = pd.read_csv(csv)
+    return check_df(csv, splain=splain)
+
+
+@timeifdebug
+def sql_df(sql, db, splain=local_settings.splain):
     db_url = get_db_url(database=db)
-    return df_df(pd.read_sql(sql, db_url), splain=splain)
+    return check_df(pd.read_sql(sql, db_url), splain=splain)
 
 @timeifdebug
-def df_df(dataframe, splain=local_settings['SPLAIN']):
+def check_df(dataframe, splain=local_settings.splain):
     frame_splain(dataframe, splain=splain)
     return dataframe
 
 
 @timeifdebug
-def get_titanic_data(splain=local_settings['SPLAIN']):
+def get_titanic_data(splain=local_settings.splain):
     return sql_df(sql='SELECT * FROM passengers',db='titanic_db', splain=splain)
+
+
+@timeifdebug
+def get_iris_data(type='csv', sql='', db='iris_db', csv='iris.csv', splain=local_settings.splain):
+    if type == 'csv':
+        return csv_df(csv, splain=splain)
+    if type == 'sql':
+        set_sql = '''
+    SELECT 
+        m.measurement_id,
+        m.sepal_length,
+        m.sepal_width,
+        m.petal_length,
+        m.petal_width,
+        s.species_name
+    FROM 
+        measurements m
+    JOIN 
+        species s
+        USING(species_id)
+        '''
+        use_sql = set_sql if sql == '' else sql
+        return sql_df(sql=use_sql, db=db, splain=splain)
+
 
 ###############################################################################
 ### regression functions                                                    ###
