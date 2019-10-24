@@ -84,7 +84,7 @@ def prep_iris(splain=local_settings.splain):
 def prep_titanic(splain=local_settings.splain):
     '''
     prep_titanic(splain=local_settings.splain)
-    RETURNS: df, encoder, scaled
+    RETURNS: df, encoder, scaler
     
     
     # Titanic Data
@@ -105,9 +105,9 @@ def prep_titanic(splain=local_settings.splain):
     df.drop(columns=['deck', 'embarked','passenger_id'], inplace=True)
     df = simpute(df=df, column='embark_town', splain=splain)
     df, encoder = encode_col(df=df, col='embark_town')
-    scaled = MinMaxScaler()
-    scaled.fit(df[['age','fare']])
-    df[['age','fare']] = scaled.transform(df[['age','fare']])
-    return df, encoder, scaled
+    scaler = MinMaxScaler()
+    scaler.fit(df[['age','fare']])
+    df[['age','fare']] = scaler.transform(df[['age','fare']])
+    return df, encoder, scaler
 
 
