@@ -37,44 +37,77 @@ def get_db_url(user=user, password=password, host=host, database='employees'):
 
 @timeifdebug
 def paste_df(splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     return check_df(pd.read_clipboard(), splain=splain)
 
 
 @timeifdebug
 def excel_df(excel_path, splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     return check_df(pd.read_excel(excel_path), splain=splain)
 
 
 @timeifdebug
 def google_df(sheet_url, splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     csv_export_url = sheet_url.replace('/edit#gid=', '/export?format=csv&gid=')
     return check_df(pd.read_csv(csv_export_url), splain=splain)
 
 
 @timeifdebug
 def csv_df(csv, splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     csv = pd.read_csv(csv)
     return check_df(csv, splain=splain)
 
 
 @timeifdebug
 def sql_df(sql, db, splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     db_url = get_db_url(database=db)
     return check_df(pd.read_sql(sql, db_url), splain=splain)
 
 @timeifdebug
 def check_df(dataframe, splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
+    dataframe.fillna(value=np.nan, inplace=True)
     frame_splain(dataframe, splain=splain)
     return dataframe
 
 
 @timeifdebug
 def get_titanic_data(splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     return sql_df(sql='SELECT * FROM passengers',db='titanic_db', splain=splain)
 
 
 @timeifdebug
 def get_iris_data(type='csv', sql='', db='iris_db', csv='iris.csv', splain=local_settings.splain):
+    '''
+    fn
+    RETURNS:
+    '''
     if type == 'csv':
         return csv_df(csv, splain=splain)
     if type == 'sql':
@@ -102,6 +135,10 @@ def get_iris_data(type='csv', sql='', db='iris_db', csv='iris.csv', splain=local
 
 @timeifdebug
 def wrangle_telco():
+    '''
+    fn
+    RETURNS:
+    '''
     get_database = 'telco_churn'
     telco_url = get_db_url(user=user, password=password, host=host, database=get_database)
     two_year_custs_sql = '''
