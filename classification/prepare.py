@@ -5,7 +5,6 @@
 
 import pandas as pd
 import numpy as np
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -16,17 +15,35 @@ warnings.filterwarnings("ignore")
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, QuantileTransformer, PowerTransformer, RobustScaler, MinMaxScaler
 
 
 import acquire as acq
+import split_scale as spsc
+
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 
 from acquire import get_iris_data, get_titanic_data
 
+
+###############################################################################
+### establish DFO class                                                     ###
+###############################################################################
+
+class DFO(): 
+    def __init__(self, **kwargs):
+    for k, v in kwargs.items():
+        setattr(self, k, v)
+
+###############################################################################
+### preparation functions                                                   ###
+###############################################################################
+
 @timeifdebug
-def encode_col(df, col):
+def encode_col(df, col, *args, **kwargs):
     '''
-    encode_col(df, col)
+    encode_col(df, col, *args, **kwargs)
     RETURNS: df, encoder
     '''
     encoder = LabelEncoder()
@@ -36,9 +53,9 @@ def encode_col(df, col):
 
 
 @timeifdebug
-def simpute(df, column, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain):
+def simpute(df, column, *args, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain, **kwargs):
     '''
-    simpute(df, column, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain)
+    simpute(df, column, *args, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain, **kwargs)
     RETURNS: df
     '''
     df[[column]] = df[[column]].fillna(missing_values)
@@ -48,14 +65,94 @@ def simpute(df, column, missing_values=np.nan, strategy='most_frequent', splain=
 
 
 ###############################################################################
+### split-scale functions                                                   ###
 ###############################################################################
+
+### Test Train Split ##########################################################
+# train, test = train_test_split(df, train_size = .80, random_state = 123)
+def split_my_data(df, target_column, train_pct=.75, random_state=None):
+    X = df.drop([target_column], axis=1)
+    y = pd.DataFrame(df[target_column])
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=train_pct, random_state=random_state)
+    return X_train, X_test, y_train, y_test
+
+
+def split_my_data_whole(df, train_pct=.75, random_state=None):
+    train, test = train_test_split(df, train_size=train_pct, random_state=random_state)
+    return train, test
+
+
+### Transform Data ############################################################
+def scalem(scaler, train, test):
+    # transform train
+    scaler.fit(train)
+    train_scaled = pd.DataFrame(scaler.transform(train), columns=train.columns.values).set_index([train.index.values])
+    # transform test
+    test_scaled = pd.DataFrame(scaler.transform(test), columns=test.columns.values).set_index([test.index.values])
+    return train_scaled, test_scaled
+
+
+def standard_scaler(train, test):
+    # create object & fit
+    scaler = StandardScaler(copy=True, with_mean=True, with_std=True).fit(train)
+    # scale'm
+    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
+    return scaler, train_scaled, test_scaled
+
+
+def scale_inverse(train_scaled, test_scaled, scaler):
+    # If we wanted to return to original values:
+    # apply to train
+    train_unscaled = pd.DataFrame(scaler.inverse_transform(train_scaled), columns=train_scaled.columns.values).set_index([train_scaled.index.values])
+    # apply to test
+    test_unscaled = pd.DataFrame(scaler.inverse_transform(test_scaled), columns=test_scaled.columns.values).set_index([test_scaled.index.values])
+    return train_unscaled, test_unscaled
+
+
+### Uniform Scaler ############################################################
+def uniform_scaler(train, test):
+    # create scaler object and fit to train
+    scaler = QuantileTransformer(n_quantiles=100, output_distribution='uniform', random_state=123, copy=True).fit(train)
+    # scale'm
+    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
+    return scaler, train_scaled, test_scaled
+
+
+### Gaussian (Normal) Scaler ##################################################
+def gaussian_scaler(train, test):
+    # create scaler object using yeo-johnson method and fit to train
+    scaler = PowerTransformer(method='yeo-johnson', standardize=False, copy=True).fit(train)
+    # scale'm
+    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
+    return scaler, train_scaled, test_scaled
+
+
+### MinMax Scaler #############################################################
+def min_max_scaler(train, test):
+    # create scaler object and fit to train
+    scaler = MinMaxScaler(copy=True, feature_range=(0,1)).fit(train)
+    # scale'm
+    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
+    return scaler, train_scaled, test_scaled
+
+
+### Robust Scaler #############################################################
+def iqr_robust_scaler(train, test):
+    # create scaler object and fit to train
+    scaler = RobustScaler(quantile_range=(25.0,75.0), copy=True, with_centering=True, with_scaling=True).fit(train)
+    # scale'm
+    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
+    return scaler, train_scaled, test_scaled
+
+
 ###############################################################################
-# Iris Data
+### Iris Data                                                               ###
+###############################################################################
 
 @timeifdebug
-def prep_iris(splain=local_settings.splain):
+def prep_iris_data(splain=local_settings.splain, **kwargs):
     '''
-    prep_iris(splain=local_settings.splain)
+    prep_iris(splain=local_settings.splain, **kwargs)
     RETURNS: df, encoder
 
     Iris Data
@@ -76,14 +173,13 @@ def prep_iris(splain=local_settings.splain):
 
 
 ###############################################################################
+### Titanic Data                                                            ###
 ###############################################################################
-###############################################################################
-# Titanic Data
 
 @timeifdebug
-def prep_titanic(splain=local_settings.splain):
+def prep_titanic_data(splain=local_settings.splain, **kwargs):
     '''
-    prep_titanic(splain=local_settings.splain)
+    prep_titanic(splain=local_settings.splain, **kwargs)
     RETURNS: df, encoder, scaler
     
     
@@ -111,3 +207,86 @@ def prep_titanic(splain=local_settings.splain):
     return df, encoder, scaler
 
 
+
+@timeifdebug
+def xy_df(dataframe, y_column):
+    '''
+    xy_df(dataframe, y_column)
+    RETURNS X_df, y_df
+
+    Pass in one dataframe of observed data and the name of the target column. Returns dataframe of all columns except the target column and dataframe of just the target column.
+
+    If y_column is a list, more than one column can be separated.
+    '''
+    X_df = dataframe.drop([y_column], axis=1)
+    frame_splain(X_df, title='X')
+    y_df = pd.DataFrame(dataframe[y_column])
+    frame_splain(y_df, title='y')
+    return X_df, y_df
+
+
+@timeifdebug
+def df_join_xy(X, y):
+    '''
+    df_join_xy(X, y)
+    RETURNS dataframe X.join(y)
+
+    Allows reconfigurations of X and y based on train or test and scaled or unscaled    
+    '''
+    join_df = X.join(y)
+    frame_splain(join_df, 'join df')
+    return join_df
+
+
+@timeifdebug
+def pairplot_train(dataframe, show_now=True):
+    '''
+    FUNCTION
+    RETURNS:
+    '''
+    plot = sns.pairplot(dataframe)
+    if show_now:
+        plt.show()
+    else:
+        return plot
+
+
+@timeifdebug
+def heatmap_train(dataframe, show_now=True):
+    '''
+    FUNCTION
+    RETURNS:
+    '''
+    plt.figure(figsize=(7,5))
+    cor = dataframe.corr()
+    plot = sns.heatmap(cor, annot=True, cmap=plt.cm.RdBu_r)
+    if show_now:
+        plt.show()
+    else:
+        return plot
+
+
+
+
+@timeifdebug
+def set_dfo(dfo_df, y_column, train_pct=.75, randomer=None, scaler_fn=standard_scaler, **kwargs):
+    '''
+    set_dfo(dfo_df=get_base_df(), y_column='taxable_value', train_pct=.75, randomer=None, scaler_fn=standard_scaler, **kwargs)
+    RETURNS: dfo object with heaping piles of context enclosed
+    
+    scaler_fn must be a function
+    dummy val added to train and test to allow for later feature selection testing
+    '''
+    dfo = DFO()
+    dfo.rawdata = dfo_df
+    dfo.y_column = y_column
+    dfo.randomer = randomer
+    dfo.train, dfo.test = split_my_data(df=target_df, random_state=randomer)
+    dfo.scaler, dfo.train_scaled, dfo.test_scaled = scaler_fn(train=dfo.train, test=dfo.test)
+    dfo.train['dummy_val']=1
+    dfo.train_scaled['dummy_val']=1
+    dfo.X_train, dfo.y_train = xy_df(dataframe=dfo.train, y_column=y_column)
+    dfo.X_test, dfo.y_test = xy_df(dataframe=dfo.test, y_column=y_column)
+    dfo.X_train_scaled, dfo.y_train_scaled = xy_df(dataframe=dfo.train_scaled, y_column=y_column)
+    dfo.X_test_scaled, dfo.y_test_scaled = xy_df(dataframe=dfo.test_scaled, y_column=y_column)
+    return dfo

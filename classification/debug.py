@@ -7,6 +7,10 @@ class Settings(): pass
 
 
 def set_settings():
+    '''
+    fn
+    RETURNS:
+    '''
     use_settings = Settings()
     use_settings.debug = False
     use_settings.see_args = False
@@ -21,6 +25,10 @@ local_settings = set_settings()
 
 
 def timeifdebug(fn):
+    '''
+    fn
+    RETURNS:
+    '''
     def inner(*args, **kwargs):
         if local_settings.debug:
             print('starting', fn.__name__)
@@ -33,6 +41,10 @@ def timeifdebug(fn):
 
 
 def timeargsifdebug(fn):
+    '''
+    fn
+    RETURNS:
+    '''
     def inner(*args, **kwargs):
         if local_settings.debug:
             print(fn.__name__, args, kwargs)
@@ -44,7 +56,11 @@ def timeargsifdebug(fn):
     return inner
 
 
-def frame_splain(df, title='DATAFRAME', topx=local_settings.topx, maxcols=local_settings.maxcols, splain=local_settings.splain):
+def frame_splain(df, title='DATAFRAME', *args, topx=local_settings.topx, maxcols=local_settings.maxcols, splain=local_settings.splain, **kwargs):
+    '''
+    fn
+    RETURNS:
+    '''
     cols = df.shape[1]
     max_x = min(topx, df.shape[0])
     if splain:
