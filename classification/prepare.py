@@ -20,7 +20,6 @@ from sklearn.preprocessing import StandardScaler, QuantileTransformer, PowerTran
 
 
 import acquire as acq
-import split_scale as spsc
 
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 
@@ -33,17 +32,17 @@ from acquire import get_iris_data, get_titanic_data
 
 class DFO(): 
     def __init__(self, **kwargs):
-    for k, v in kwargs.items():
-        setattr(self, k, v)
+        for k, v in kwargs.items():
+            setattr(self, k, v)
 
 ###############################################################################
 ### preparation functions                                                   ###
 ###############################################################################
 
 @timeifdebug
-def encode_col(df, col, *args, **kwargs):
+def encode_col(df, col, **kwargs):
     '''
-    encode_col(df, col, *args, **kwargs)
+    encode_col(df, col, **kwargs)
     RETURNS: df, encoder
     '''
     encoder = LabelEncoder()
@@ -53,9 +52,9 @@ def encode_col(df, col, *args, **kwargs):
 
 
 @timeifdebug
-def simpute(df, column, *args, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain, **kwargs):
+def simpute(df, column, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain, **kwargs):
     '''
-    simpute(df, column, *args, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain, **kwargs)
+    simpute(df, column, missing_values=np.nan, strategy='most_frequent', splain=local_settings.splain, **kwargs)
     RETURNS: df
     '''
     df[[column]] = df[[column]].fillna(missing_values)
@@ -70,20 +69,20 @@ def simpute(df, column, *args, missing_values=np.nan, strategy='most_frequent', 
 
 ### Test Train Split ##########################################################
 # train, test = train_test_split(df, train_size = .80, random_state = 123)
-def split_my_data(df, target_column, train_pct=.75, random_state=None):
+def split_my_data(df, target_column, train_pct=.75, random_state=None, **kwargs):
     X = df.drop([target_column], axis=1)
     y = pd.DataFrame(df[target_column])
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=train_pct, random_state=random_state)
     return X_train, X_test, y_train, y_test
 
 
-def split_my_data_whole(df, train_pct=.75, random_state=None):
+def split_my_data_whole(df, train_pct=.75, random_state=None, **kwargs):
     train, test = train_test_split(df, train_size=train_pct, random_state=random_state)
     return train, test
 
 
 ### Transform Data ############################################################
-def scalem(scaler, train, test):
+def scalem(scaler, train, test, **kwargs):
     # transform train
     scaler.fit(train)
     train_scaled = pd.DataFrame(scaler.transform(train), columns=train.columns.values).set_index([train.index.values])
@@ -92,15 +91,7 @@ def scalem(scaler, train, test):
     return train_scaled, test_scaled
 
 
-def standard_scaler(train, test):
-    # create object & fit
-    scaler = StandardScaler(copy=True, with_mean=True, with_std=True).fit(train)
-    # scale'm
-    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
-    return scaler, train_scaled, test_scaled
-
-
-def scale_inverse(train_scaled, test_scaled, scaler):
+def scale_inverse(train_scaled, test_scaled, scaler, **kwargs):
     # If we wanted to return to original values:
     # apply to train
     train_unscaled = pd.DataFrame(scaler.inverse_transform(train_scaled), columns=train_scaled.columns.values).set_index([train_scaled.index.values])
@@ -109,37 +100,46 @@ def scale_inverse(train_scaled, test_scaled, scaler):
     return train_unscaled, test_unscaled
 
 
+### Standard Scaler ###########################################################
+def standard_scaler(train, test, copy=True, with_mean=True, with_std=True, **kwargs):
+    # create object & fit
+    scaler = StandardScaler(copy=copy, with_mean=with_mean, with_std=with_std).fit(train)
+    # scale'm
+    train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
+    return scaler, train_scaled, test_scaled
+
+
 ### Uniform Scaler ############################################################
-def uniform_scaler(train, test):
+def uniform_scaler(train, test, n_quantiles=100, output_distribution='uniform', random_state=123, copy=True, **kwargs):
     # create scaler object and fit to train
-    scaler = QuantileTransformer(n_quantiles=100, output_distribution='uniform', random_state=123, copy=True).fit(train)
+    scaler = QuantileTransformer(n_quantiles=n_quantiles, output_distribution=output_distribution, random_state=random_state, copy=True).fit(train)
     # scale'm
     train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
     return scaler, train_scaled, test_scaled
 
 
 ### Gaussian (Normal) Scaler ##################################################
-def gaussian_scaler(train, test):
+def gaussian_scaler(train, test, method='yeo-johnson', standardize=False, copy=True, **kwargs):
     # create scaler object using yeo-johnson method and fit to train
-    scaler = PowerTransformer(method='yeo-johnson', standardize=False, copy=True).fit(train)
+    scaler = PowerTransformer(method=method, standardize=standardize, copy=copy).fit(train)
     # scale'm
     train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
     return scaler, train_scaled, test_scaled
 
 
 ### MinMax Scaler #############################################################
-def min_max_scaler(train, test):
+def min_max_scaler(train, test, copy=True, feature_range=(0,1), **kwargs):
     # create scaler object and fit to train
-    scaler = MinMaxScaler(copy=True, feature_range=(0,1)).fit(train)
+    scaler = MinMaxScaler(copy=copy, feature_range=feature_range).fit(train)
     # scale'm
     train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
     return scaler, train_scaled, test_scaled
 
 
 ### Robust Scaler #############################################################
-def iqr_robust_scaler(train, test):
+def iqr_robust_scaler(train, test, quantile_range=(25.0,75.0), copy=True, with_centering=True, with_scaling=True, **kwargs):
     # create scaler object and fit to train
-    scaler = RobustScaler(quantile_range=(25.0,75.0), copy=True, with_centering=True, with_scaling=True).fit(train)
+    scaler = RobustScaler(quantile_range=quantile_range, copy=copy, with_centering=with_centering, with_scaling=with_scaling).fit(train)
     # scale'm
     train_scaled, test_scaled = scalem(scaler=scaler, test=test, train=train)
     return scaler, train_scaled, test_scaled
@@ -269,7 +269,7 @@ def heatmap_train(dataframe, show_now=True):
 
 
 @timeifdebug
-def set_dfo(dfo_df, y_column, train_pct=.75, randomer=None, scaler_fn=standard_scaler, **kwargs):
+def set_dfo(dfo_df, y_column, train_pct=.75, randomer=None, **kwargs):
     '''
     set_dfo(dfo_df=get_base_df(), y_column='taxable_value', train_pct=.75, randomer=None, scaler_fn=standard_scaler, **kwargs)
     RETURNS: dfo object with heaping piles of context enclosed
@@ -278,11 +278,33 @@ def set_dfo(dfo_df, y_column, train_pct=.75, randomer=None, scaler_fn=standard_s
     dummy val added to train and test to allow for later feature selection testing
     '''
     dfo = DFO()
-    dfo.rawdata = dfo_df
+    dfo.df = dfo_df
     dfo.y_column = y_column
+    return dfo
+
+
+def scale_dfo(dfo, scaler_fn=standard_scaler):
+    '''
+    scale_dfo(dfo, scaler_fn=standard_scaler)
+    RETURNS: dfo object with heaping piles of context enclosed
+    
+    scaler_fn must be a function
+    dummy val added to train and test to allow for later feature selection testing
+    '''
+    dfo.scaler, dfo.train_scaled, dfo.test_scaled = scaler_fn(train=dfo.train, test=dfo.test)
+    return dfo
+
+
+def split_dfo(dfo, train_pct=.75, randomer=None):
+    '''
+    scale_dfo(dfo, scaler_fn=standard_scaler)
+    RETURNS: dfo object with heaping piles of context enclosed
+    
+    scaler_fn must be a function
+    dummy val added to train and test to allow for later feature selection testing
+    '''
     dfo.randomer = randomer
     dfo.train, dfo.test = split_my_data(df=target_df, random_state=randomer)
-    dfo.scaler, dfo.train_scaled, dfo.test_scaled = scaler_fn(train=dfo.train, test=dfo.test)
     dfo.train['dummy_val']=1
     dfo.train_scaled['dummy_val']=1
     dfo.X_train, dfo.y_train = xy_df(dataframe=dfo.train, y_column=y_column)

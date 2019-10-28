@@ -29,7 +29,7 @@ import acquire as acq
 import prepare as prep
 
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
-from acquire import get_iris_data, get_titanic_data, DFO
+from acquire import get_iris_data, get_titanic_data
 from prepare import DFO
 
 
