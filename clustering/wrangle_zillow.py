@@ -99,6 +99,8 @@ def get_zillow_data(splain=local_settings.splain, **kwargs):
             count(*) `transactions`
         from 
             predictions_2017
+        where
+            transactiondate like '2017%%'
         group by 
             `parcelid`
         ) m

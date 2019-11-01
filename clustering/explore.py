@@ -30,7 +30,7 @@ import prepare as prep
 
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 from acquire import get_iris_data, get_titanic_data
-from prepare import DFO
+from dfo import DFO
 
 
 @timeifdebug
@@ -97,9 +97,21 @@ def get_objs(df, **kwargs):
 
 
 @timeifdebug
-def get_uniques(df, max_uniques=10, target_col='', **kwargs):
+def get_uniques(
+        df, 
+        get_cols=[], 
+        max_uniques=10, 
+        target_col='', 
+        **kwargs
+        ):
     '''
-    get_uniques(df, max_uniques=10, target_col='', **kwargs)
+    get_uniques(
+        df, 
+        get_cols=[], 
+        max_uniques=10, 
+        target_col='', 
+        **kwargs
+        )
     RETURNS summary dataframe
 
     Receives dataframe as input, examines all columns defined as objects, and
@@ -112,6 +124,8 @@ def get_uniques(df, max_uniques=10, target_col='', **kwargs):
     If the input dataframe contains the target column, enter that name as the 
     target_col argument so it can be removed from the analysis.
     '''
+    cols = [col for col in get_cols if col in df.columns]
+    #df_objs = pd.DataFrame(get_objs(df), columns=['cols'])
     df_objs = pd.DataFrame(get_objs(df), columns=['cols'])
     df_objs = df_objs[df_objs.cols != target_col]
     df_objs['nuniques'] = df_objs.cols.apply(lambda x: df[x].nunique())
