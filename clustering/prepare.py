@@ -23,17 +23,6 @@ import acquire as acq
 
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 
-from acquire import get_iris_data, get_titanic_data
-
-
-###############################################################################
-### establish DFO class                                                     ###
-###############################################################################
-
-class DFO(): 
-    def __init__(self, **kwargs):
-        for k, v in kwargs.items():
-            setattr(self, k, v)
 
 ###############################################################################
 ### preparation functions                                                   ###
@@ -145,73 +134,14 @@ def iqr_robust_scaler(train, test, quantile_range=(25.0,75.0), copy=True, with_c
     return scaler, train_scaled, test_scaled
 
 
-###############################################################################
-### Iris Data                                                               ###
-###############################################################################
-
+### X y splits ################################################################
 @timeifdebug
-def prep_iris_data(splain=local_settings.splain, **kwargs):
+def xy_df(df, y_column):
     '''
-    prep_iris(splain=local_settings.splain, **kwargs)
-    RETURNS: df, encoder
-
-    Iris Data
-
-    1. Use the function defined in acquire.py to load the iris data.
-    2. Drop the species_id and measurement_id columns.
-    3. Rename the species_name column to just species.
-    4. Encode the species name using a sklearn label encoder. Research the 
-    inverse_transform method of the label encoder. How might this be useful?
-    5. Create a function named prep_iris that accepts the untransformed iris 
-    data, and returns the data with the transformations above applied.
-    '''
-    df = get_iris_data(type='sql', splain=splain)
-    df = df.drop(columns='measurement_id', axis=1)
-    df = df.rename(columns={'species_name': 'species'})
-    df, encoder = encode_col(df=df, col='species')
-    return df, encoder
-
-
-###############################################################################
-### Titanic Data                                                            ###
-###############################################################################
-
-@timeifdebug
-def prep_titanic_data(splain=local_settings.splain, **kwargs):
-    '''
-    prep_titanic(splain=local_settings.splain, **kwargs)
-    RETURNS: df, encoder, scaler
-    
-    
-    # Titanic Data
-
-    # 1. Use the function you defined in acquire.py to load the titanic data set.
-    # 2. Handle the missing values in the embark_town and embarked columns.
-    # 3. Remove the deck column.
-    # 4. Use a label encoder to transform the embarked column.
-    # 5. Scale the age and fare columns using a min max scaler. Why might this be 
-    # beneficial? When might you not want to do this?
-    # 6. Create a function named prep_titanic that accepts the untransformed 
-    # titanic data, and returns the data with the transformations above applied.
-
-    # Note: drop columns updated to deck, embarked, passenger_id in explore
-    # Note: encoding changed to embark_town
-    '''
-    df = get_titanic_data(splain=splain)
-    df.drop(columns=['deck', 'embarked','passenger_id'], inplace=True)
-    df = simpute(df=df, column='embark_town', splain=splain)
-    df, encoder = encode_col(df=df, col='embark_town')
-    scaler = MinMaxScaler()
-    scaler.fit(df[['age','fare']])
-    df[['age','fare']] = scaler.transform(df[['age','fare']])
-    return df, encoder, scaler
-
-
-
-@timeifdebug
-def xy_df(dataframe, y_column):
-    '''
-    xy_df(dataframe, y_column)
+    xy_df(
+        df, 
+        y_column
+    )
     RETURNS X_df, y_df
 
     Pass in one dataframe of observed data and the name of the target column. Returns dataframe of all columns except the target column and dataframe of just the target column.
@@ -228,7 +158,10 @@ def xy_df(dataframe, y_column):
 @timeifdebug
 def df_join_xy(X, y):
     '''
-    df_join_xy(X, y)
+    df_join_xy(
+        X, 
+        y
+    )
     RETURNS dataframe X.join(y)
 
     Allows reconfigurations of X and y based on train or test and scaled or unscaled    
@@ -239,9 +172,12 @@ def df_join_xy(X, y):
 
 
 @timeifdebug
-def pairplot_train(dataframe, show_now=True):
+def pairplot_train(df, show_now=True):
     '''
-    FUNCTION
+    pairplot_train(
+        df, 
+        show_now=True
+    )
     RETURNS:
     '''
     plot = sns.pairplot(dataframe)
@@ -252,9 +188,12 @@ def pairplot_train(dataframe, show_now=True):
 
 
 @timeifdebug
-def heatmap_train(dataframe, show_now=True):
+def heatmap_train(df, show_now=True):
     '''
-    FUNCTION
+    heatmap_train(
+        df, 
+        show_now=True
+    )
     RETURNS:
     '''
     plt.figure(figsize=(7,5))
@@ -266,49 +205,3 @@ def heatmap_train(dataframe, show_now=True):
         return plot
 
 
-
-
-@timeifdebug
-def set_dfo(dfo_df, y_column, train_pct=.75, randomer=None, **kwargs):
-    '''
-    set_dfo(dfo_df=get_base_df(), y_column='taxable_value', train_pct=.75, randomer=None, scaler_fn=standard_scaler, **kwargs)
-    RETURNS: dfo object with heaping piles of context enclosed
-    
-    scaler_fn must be a function
-    dummy val added to train and test to allow for later feature selection testing
-    '''
-    dfo = DFO()
-    dfo.df = dfo_df
-    dfo.y_column = y_column
-    return dfo
-
-
-def scale_dfo(dfo, scaler_fn=standard_scaler):
-    '''
-    scale_dfo(dfo, scaler_fn=standard_scaler)
-    RETURNS: dfo object with heaping piles of context enclosed
-    
-    scaler_fn must be a function
-    dummy val added to train and test to allow for later feature selection testing
-    '''
-    dfo.scaler, dfo.train_scaled, dfo.test_scaled = scaler_fn(train=dfo.train, test=dfo.test)
-    return dfo
-
-
-def split_dfo(dfo, train_pct=.75, randomer=None):
-    '''
-    scale_dfo(dfo, scaler_fn=standard_scaler)
-    RETURNS: dfo object with heaping piles of context enclosed
-    
-    scaler_fn must be a function
-    dummy val added to train and test to allow for later feature selection testing
-    '''
-    dfo.randomer = randomer
-    dfo.train, dfo.test = split_my_data(df=target_df, random_state=randomer)
-    dfo.train['dummy_val']=1
-    dfo.train_scaled['dummy_val']=1
-    dfo.X_train, dfo.y_train = xy_df(dataframe=dfo.train, y_column=y_column)
-    dfo.X_test, dfo.y_test = xy_df(dataframe=dfo.test, y_column=y_column)
-    dfo.X_train_scaled, dfo.y_train_scaled = xy_df(dataframe=dfo.train_scaled, y_column=y_column)
-    dfo.X_test_scaled, dfo.y_test_scaled = xy_df(dataframe=dfo.test_scaled, y_column=y_column)
-    return dfo
