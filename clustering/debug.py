@@ -33,11 +33,11 @@ def timeifdebug(fn):
     '''
     def inner(*args, **kwargs):
         if local_settings.debug:
-            print('starting', fn.__name__)
+            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'starting', fn.__name__)
             t1 = time.time()
         result = fn(*args, **kwargs)
         if local_settings.debug:
-            print('ending', fn.__name__, '; time:', time.time() - t1)
+            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'ending', fn.__name__, '; time:', time.time() - t1)
         return result
     return inner
 
@@ -49,20 +49,41 @@ def timeargsifdebug(fn):
     '''
     def inner(*args, **kwargs):
         if local_settings.debug:
-            print(fn.__name__, args, kwargs)
+            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'starting', fn.__name__)
+            if args:
+                print('Args:', args)
+            if kwargs:
+                print('Kwargs:', kwargs)
             t1 = time.time()
         result = fn(*args, **kwargs)
         if local_settings.debug:
-            print('ending', fn.__name__, '; time:', time.time() - t1)
+            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'ending', fn.__name__, '; time:', time.time() - t1)
         return result
     return inner
 
 
 @timeifdebug
-def frame_splain(df, title='DATAFRAME', *args, topx=local_settings.topx, maxcols=local_settings.maxcols, splain=local_settings.splain, **kwargs):
+def frame_splain(
+        df, 
+        title='DATAFRAME', 
+        *args, 
+        topx=local_settings.topx, 
+        maxcols=local_settings.maxcols, 
+        splain=local_settings.splain, 
+        **kwargs
+    ):
     '''
-    fn
-    RETURNS:
+    frame_splain(
+        df, 
+        title='DATAFRAME', 
+        *args, 
+        topx=local_settings.topx, 
+        maxcols=local_settings.maxcols, 
+        splain=local_settings.splain, 
+        **kwargs
+    )
+    RETURNS: Summary data of a dataframe, including shape, info, description, 
+    and the top topx rows if column count is not more than maxcols
     '''
     cols = df.shape[1]
     max_x = min(topx, df.shape[0])

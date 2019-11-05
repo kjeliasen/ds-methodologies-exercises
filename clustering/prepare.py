@@ -66,6 +66,7 @@ def retype_cols(df, cols, to_dtype, **kwargs):
         df[col] = df[col].astype(to_dtype)
     return df
 
+
 @timeifdebug
 def remove_cols(df, cols, **kwargs):
     '''
@@ -79,6 +80,24 @@ def remove_cols(df, cols, **kwargs):
         df = df.drop(columns=dropcols)    
     return df
     
+
+@timeifdebug
+def convert_to_dates(df, cols=[], format='%Y-%m-%d', errors='coerce', **kwargs):
+    '''
+    convert_to_dates(
+        df, 
+        cols, 
+        format='%y-%m-%d', 
+        errors='coerce', 
+        **kwargs
+    )
+    RETURNS df with columns updated to dates
+    '''
+    convertcols = [col for col in cols if col in df.columns]
+    for col in convertcols:
+        df[col] = pd.to_datetime(df[col], errors=errors, format=format)
+    return df    
+
 ###############################################################################
 ### split-scale functions                                                   ###
 ###############################################################################
@@ -318,6 +337,91 @@ def scale_dfo(dfo, scaler_fn=standard_scaler, splain=local_settings.splain, **kw
     return dfo
 
 
+###############################################################################
+### value analysis functions                                                ###
+###############################################################################
+
+def get_column_values_stats(
+        df, 
+        get_cols=[], 
+        max_uniques=10, 
+        target_col='',
+        limit_to_max=False,
+        **kwargs
+        ):
+    '''
+    get_column_values_stats(
+        df, 
+        get_cols=[], 
+        max_uniques=10, 
+        target_col='', 
+        limit_to_max=False,
+        **kwargs
+        )
+    RETURNS summary dataframe
+
+    Receives dataframe as input, examines all columns defined as objects, and
+    returns a summary report with column name as its index.
+
+    Report shows the following information about the columns of the dataframe:
+        cols: column name
+        dtypes: data type
+        row_values: number of rows with non-null values 
+        rows_missing: number of rows with missing values
+        pctg_missing: percentage of rows with missing values
+        nunuiques: number of unique values 
+        uniques: list of unique values if the unique value count is less than 
+            or equal to max_uniques.
+        
+    If the input dataframe contains the target column, enter that name as the 
+    target_col argument and it will be removed from the analysis.
+    
+    If limit_to_max is True (default), the resulting dataframe will only show
+    columns with no more unique values than specified in max_uniques.
+    
+    NOTE: This function can be used to identify and then re-type catergorical
+    columns. Run the function with the following parameters, change the data 
+    types of know categorical values to 'category', then re-run this function, 
+    gradually increasing the max_uniques value until the desired limit for 
+    categoricals has been met.
+    
+    get_column_values_stats(
+        df, 
+        get_cols=df.columns[df.dtypes!='category'],
+        max_uniques=5,
+        limit_to_max=True
+        )
+    '''
+    # get rowcount
+    num_recs = len(df)
+    
+    # if no columns presented, get all columns from df
+    use_cols = df.columns if len(get_cols) == 0 else get_cols
+    # ensure use_cols are actually present in df
+    cols = [col for col in use_cols if col in df.columns]
+    
+    # make df for all columns, exclude target column if passed
+    df_cols = pd.DataFrame(cols, columns=['cols'])
+    df_cols = df_cols[df_cols.cols != target_col]
+    
+    # get statistics on all columns
+    df_cols['dtype'] = df_cols.cols.apply(lambda x: df[x].dtype)
+    df_cols['row_values'] = df_cols.cols.apply(lambda x: df[x].count())
+    df_cols['rows_missing'] = num_recs - df_cols.row_values
+    df_cols['pct_missing'] = df_cols.rows_missing / num_recs
+    df_cols['nuniques'] = df_cols.cols.apply(lambda x: df[x].nunique())
+    
+    # get unique valeues for columns within unique value limits
+    df_cats = df_cols[df_cols.nuniques <= max_uniques]
+    df_cats['uniques'] = df_cats.cols.apply(lambda x: df[x].unique())
+    
+    # merge and set index
+    join_type = 'inner' if limit_to_max else 'left'
+    df_cols = df_cols.join(df_cats.uniques, how=join_type)
+    return df_cols.set_index('cols')
+
+
+###############################################################################
 
 
 
@@ -356,10 +460,12 @@ def data_prep(df, cols_to_remove=[], prop_required_column=.5, prop_required_row=
     df = handle_missing_values(df, prop_required_column, prop_required_row)
     return df
 
+
 # Data types: Write a function that takes in a dataframe and a list of columns names and returns the dataframe with the datatypes of those columns changed to a non-numeric type & use this function to appropriately transform any numeric columns that should not be treated as numbers
 def numeric_to_category(df, cols):
     df[cols] = df[cols].astype('category')
     return df
+
 
 # Write a function that accepts the zillow data frame and removes the outliers. 
 def remove_outliers_iqr(df, columns, k=1.5):
@@ -371,3 +477,74 @@ def remove_outliers_iqr(df, columns, k=1.5):
         df = df[df[col] <= ub]
         df = df[df[col] >= lb]
     return df
+
+
+def get_how_far_outliers(s,k):
+    '''
+    get_how_far_outliers(s,k)
+    RETURNS Series
+    '''
+    q1,q3=s.quantile([.25,.75])
+    iqr=q3-q1
+    bound = iqr*k
+    upper_bound=q3+bound
+    lower_bound=q1-bound
+    
+    return s.apply(lambda x:max([x-upper_bound,0]) if x > lower_bound else x-lower_bound)
+
+
+
+
+###############################################################################
+### functions stolen from Sam                                               ###
+###############################################################################
+
+
+def Sams_one_function(tbd=True):
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    
+    sns.set_style('whitegrid')
+    
+    # Show distributions of all numeric data
+    for feature in telco.select_dtypes(include=[float, int]):
+        sns.distplot(telco[feature])
+        plt.show()
+    
+    # and for categorical...
+
+    categorical = ['gender', 'senior_citizen', 'partner', 'dependents', 'phone_service',
+                            'multiple_lines', 'online_security', 'online_backup', 'device_protection',
+                        'tech_support', 'streaming_tv', 'streaming_movies', 'paperless_billing',
+                        'churn', 'contract_type', 'internet_service_type', 'payment_type']
+
+    for feature in categorical:
+        sns.countplot(x=feature, palette="ch:.25", data=telco)
+        plt.show()
+
+
+def df_value_counts(df):
+    for col in df.columns:
+        print(f'{col}:')
+        if df[col].dtype == 'object':
+            col_count = df[col].value_counts()
+        else:
+            if df[col].nunique() >= 35:
+                col_count = df[col].value_counts(bins=10, sort=False)
+            else:
+                col_count = df[col].value_counts()
+        print(col_count)
+
+
+def Sams_other_function(tbd=True):
+    import matplotlib.patches as mpatches
+    sns.scatterplot(x='waiting', y='predicted', data=faithful, alpha=0.8)
+    sns.scatterplot(x='waiting', y='eruptions', data=faithful) 
+    plt.title('Waiting Time Between Geyser Eruptions at Old Faithful')
+    plt.yticks(np.arange(0,6))
+    rmse = regression_errors(faithful.eruptions, faithful.predicted)[4]
+    blue_patch = mpatches.Patch(color='blue', label='Predicted')
+    orange_patch = mpatches.Patch(color='orange', label='Actual')
+    plt.legend(handles=[blue_patch, orange_patch])
+    plt.annotate(s=f'RMSE: {rmse}', xy=(72,1))
+    plt.show()
