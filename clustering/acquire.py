@@ -102,81 +102,9 @@ def check_df(dataframe, *args, splain=local_settings.splain, **kwargs):
     return dataframe
 
 
-@timeifdebug
-def get_titanic_data(splain=local_settings.splain, **kwargs):
-    '''
-    get_titanic_data(splain=local_settings.splain, **kwargs)
-    RETURNS: dataframe
-
-    The Titanic dataset required for future use comes from a pre-provided sql
-    statement. This function passes through sql_df() and check_df().
-    '''
-    return sql_df(sql='SELECT * FROM passengers',db='titanic_db', splain=splain, **kwargs)
-
-
-@timeifdebug
-def get_iris_data(type='sql', sql='', db='iris_db', csv='iris.csv', splain=local_settings.splain, **kwargs):
-    '''
-    get_iris_data(type='sql', sql='', db='iris_db', csv='iris.csv', splain=local_settings.splain, **kwargs)
-    RETURNS: dataframe
-
-    Iris data is available as sql or csv, so this function allows for both 
-    options. Default is sql and there is a default sql script in the function,
-    but this may be overrided by the user.
-
-    The output of this function passes through sql_df() and check_df().
-    '''
-    if type == 'csv':
-        return csv_df(csv, splain=splain)
-    if type == 'sql':
-        set_sql = '''
-    SELECT 
-        m.measurement_id,
-        m.sepal_length,
-        m.sepal_width,
-        m.petal_length,
-        m.petal_width,
-        s.species_name
-    FROM 
-        measurements m
-    JOIN 
-        species s
-        USING(species_id)
-        '''
-        use_sql = set_sql if sql == '' else sql
-        return sql_df(sql=use_sql, db=db, splain=splain, **kwargs)
 
 
 ###############################################################################
 ### regression functions                                                    ###
 ###############################################################################
-
-@timeifdebug
-def wrangle_telco():
-    '''
-    fn
-    RETURNS:
-    '''
-    get_database = 'telco_churn'
-    telco_url = get_db_url(user=user, password=password, host=host, database=get_database)
-    two_year_custs_sql = '''
-    SELECT
-        customer_id,
-        monthly_charges,
-        tenure,
-        total_charges
-    FROM
-        customers
-    WHERE
-        contract_type_id = 3
-    '''
-
-    custs = pd.read_sql(two_year_custs_sql, telco_url)
-    custs.total_charges.replace(r'^\s*$ ', np.nan, regex=True, inplace=True) 
-    custs = custs[custs.total_charges != ' ']    
-    custs = custs[custs.total_charges != '']    
-    custs=custs.astype({'total_charges': float})
-    custs = custs.set_index('customer_id')
-    return custs    
-
 

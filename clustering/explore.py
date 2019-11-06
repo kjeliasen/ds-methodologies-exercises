@@ -2,9 +2,6 @@
 ### python imports                                                          ###
 ###############################################################################
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,7 +26,7 @@ import acquire as acq
 import prepare as prep
 
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
-from acquire import get_iris_data, get_titanic_data
+#from acquire import get_iris_data, get_titanic_data
 from dfo import DFO
 
 

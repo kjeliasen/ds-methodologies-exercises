@@ -33,11 +33,12 @@ def timeifdebug(fn):
     '''
     def inner(*args, **kwargs):
         if local_settings.debug:
-            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'starting', fn.__name__)
-            t1 = time.time()
+            t1 = datetime.now()
+            print(get_date_time_code(datetime=t1, in_format='%Y-%m-%d %H:%M:%S'), 'starting', fn.__name__)
         result = fn(*args, **kwargs)
         if local_settings.debug:
-            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'ending', fn.__name__, '; time:', time.time() - t1)
+            t2 = datetime.now()
+            print(get_date_time_code(datetime=t2, in_format='%Y-%m-%d %H:%M:%S'), 'ending', fn.__name__, '; time:', t2 - t1)
         return result
     return inner
 
@@ -49,15 +50,16 @@ def timeargsifdebug(fn):
     '''
     def inner(*args, **kwargs):
         if local_settings.debug:
-            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'starting', fn.__name__)
+            t1 = datetime.now()
+            print(get_date_time_code(datetime=t1, in_format='%Y-%m-%d %H:%M:%S'), 'starting', fn.__name__)
             if args:
                 print('Args:', args)
             if kwargs:
                 print('Kwargs:', kwargs)
-            t1 = time.time()
         result = fn(*args, **kwargs)
         if local_settings.debug:
-            print(get_date_time_code(format='%Y-%m-%d %H:%M:%S'), 'ending', fn.__name__, '; time:', time.time() - t1)
+            t2 = datetime.now()
+            print(get_date_time_code(datetime=t2, in_format='%Y-%m-%d %H:%M:%S'), 'ending', fn.__name__, '; time:', t2 - t1)
         return result
     return inner
 
@@ -99,6 +101,5 @@ def frame_splain(
             print(df.head(max_x), '\n')
 
 
-@timeargsifdebug
 def get_date_time_code(datetime=datetime.now(), in_format='%Y%d%m%H%M'):
     return datetime.strftime(in_format)

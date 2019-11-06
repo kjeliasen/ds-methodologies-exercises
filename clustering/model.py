@@ -1,10 +1,4 @@
 ###############################################################################
-# Exercises
-
-# Do your work for these exercises in either a notebook or a python script 
-# named model.
-
-###############################################################################
 ### python imports                                                          ###
 ###############################################################################
 
@@ -33,7 +27,7 @@ import explore as xplr
 import evaluate as meval
 
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
-from prepare import DFO
+from dfo import DFO
 
 
 ###############################################################################
