@@ -7,6 +7,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+from math import sqrt
+from scipy import stats
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score
 from sklearn.linear_model import LassoCV
@@ -212,3 +216,75 @@ def lasso_cv_coef(X_train, y_train, plotit=True, summarize=True):
         plt.plot()
     return model, yhat, alpha, score, coef
 
+
+
+@timeifdebug
+def bool_ttest_single_tf(df, target_column='target', column_list=[], alpha=.05, **kwargs):
+
+    p_list = []
+    col_name = target_column
+    for col in column_list:
+        is_true = df[df[col] == True]
+        y_if_true = is_true[col_name].mean()
+        y_mean = df[col_name].mean()
+        t, p = stats.ttest_1samp(is_true.churn, df.churn.mean())
+        p_list.append([col, t, p, p<alpha, y_if_true, y_mean])
+    df_p = pd.DataFrame(p_list, columns=['column','t_stat','p_value','is_sig', col_name + '_if_true', col_name + '_mean']).set_index('column').sort_values(by='p_value')
+    return df_p
+
+
+@timeifdebug
+def bool_ttest_multi_tf(df, target_column='target', column_list=[], alpha=.05, **kwargs):
+    col_name = target_column
+    p_list = []
+    for col in column_list:
+        is_true = df[df[col] == True][col_name]
+        is_not = df[df[col] != True][col_name]
+        y_if_true = is_true.mean()
+        y_if_not = is_not.mean()
+        t, p = stats.ttest_ind(is_true, is_not)
+        p_list.append([col, t, p, p<alpha, y_if_true, y_if_not])
+
+    df_p2 = pd.DataFrame(p_list, columns=['column','t_stat','p_value','is_sig', col_name + '_if_true', col_name + '_if_not']).set_index('column').sort_values(by='p_value')
+    return df_p2
+
+
+@timeifdebug
+def bool_ttest_single_uniq(df, target_column='target', check_column='check', alpha=.05, **kwargs):
+
+    p_list = []
+    uniq_vals = sorted(df[check_column].unique())
+    print(uniq_vals)
+    for val in uniq_vals:
+        is_true = df[df[check_column] == val]
+        num_true = len(is_true)
+        y_if_true = is_true[target_column].mean()
+        std_if_true = is_true[target_column].std()
+        y_mean = df[target_column].mean()
+        y_std = df[target_column].std()
+        t, p = stats.ttest_1samp(is_true[target_column], df[target_column].mean())
+        p_list.append([check_column, val, num_true, t, p, p<alpha, y_if_true, y_mean, std_if_true, y_std])
+    df_p = (pd.DataFrame(
+        p_list, 
+        columns=[
+            'column','value','count','t_stat','p_value','is_sig',
+            target_column+'_if_value',target_column+'_mean',
+            'std_if_value','std_all'])
+        .set_index(['value'])
+            .sort_values(by='p_value'))
+    return df_p
+
+# @timeifdebug
+# def bool_ttest_multi_uniq(df, target_column='target', column_list=[], compare_val=True, alpha=.05, **kwargs):
+#     col_name = target_column
+#     p_list = []
+#     for col in column_list:
+#         is_true = df[df[col] == compare_val][col_name]
+#         is_not = df[df[col] != compare_val][col_name]
+#         y_if_true = is_true.mean()
+#         y_if_not = is_not.mean()
+#         t, p = stats.ttest_ind(is_true, is_not)
+#         p_list.append([col, t, p, p<alpha, y_if_true, y_if_not])
+
+#     df_p2 = pd.DataFrame(p_list, columns=['column','t_stat','p_value','is_sig', col_name + '_if_true', col_name + '_if_not']).set_index('column').sort_values(by='p_value')
+#     return df_p2

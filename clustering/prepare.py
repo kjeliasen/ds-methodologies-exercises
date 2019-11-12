@@ -31,6 +31,11 @@ from dfo import DFO, set_dfo
 ###############################################################################
 
 @timeifdebug
+def is_in_both():
+    pass
+
+
+@timeifdebug
 def encode_col(df, col, **kwargs):
     '''
     encode_col(df, col, **kwargs)
@@ -97,6 +102,27 @@ def convert_to_dates(df, cols=[], format='%Y-%m-%d', errors='coerce', **kwargs):
     for col in convertcols:
         df[col] = pd.to_datetime(df[col], errors=errors, format=format)
     return df    
+
+
+@timeifdebug
+def nulls_by_row(df):
+    total_cols = df.shape[1]
+    num_cols_missing = df.isnull().sum(axis=1)
+    pct_cols_missing = df.isnull().sum(axis=1)/ total_cols
+    rows_missing = (
+        pd.DataFrame(
+        {
+            'num_cols_missing': num_cols_missing, 
+            'pct_cols_missing': pct_cols_missing
+        }
+        )
+        .reset_index()
+        .groupby(['num_cols_missing','pct_cols_missing'])
+        .count()
+        .rename(index=str, columns={'index': 'num_rows'})
+        .reset_index()
+    )
+    return rows_missing 
 
 ###############################################################################
 ### split-scale functions                                                   ###
@@ -341,12 +367,14 @@ def scale_dfo(dfo, scaler_fn=standard_scaler, splain=local_settings.splain, **kw
 ### value analysis functions                                                ###
 ###############################################################################
 
+@timeifdebug
 def get_column_values_stats(
         df, 
         get_cols=[], 
         max_uniques=10, 
         target_col='',
         limit_to_max=False,
+        allow_zero_cols=False,
         **kwargs
         ):
     '''
@@ -356,6 +384,7 @@ def get_column_values_stats(
         max_uniques=10, 
         target_col='', 
         limit_to_max=False,
+        allow_zero_cols=False,
         **kwargs
         )
     RETURNS summary dataframe
@@ -366,12 +395,12 @@ def get_column_values_stats(
     Report shows the following information about the columns of the dataframe:
         cols: column name
         dtypes: data type
-        row_values: number of rows with non-null values 
-        rows_missing: number of rows with missing values
-        pctg_missing: percentage of rows with missing values
-        nunuiques: number of unique values 
-        uniques: list of unique values if the unique value count is less than 
-            or equal to max_uniques.
+        num_rows_values: number of rows with non-null values 
+        num_rows_missing: number of rows with missing values
+        pct_rows_missing: percentage of rows with missing values
+        num_uniques: number of unique values 
+        unique_values: list of unique values if the unique value count is less 
+            than or equal to max_uniques.
         
     If the input dataframe contains the target column, enter that name as the 
     target_col argument and it will be removed from the analysis.
@@ -379,6 +408,11 @@ def get_column_values_stats(
     If limit_to_max is True (default), the resulting dataframe will only show
     columns with no more unique values than specified in max_uniques.
     
+    If allow_zero_cols is True, the resulting dataframe will return no rows if 
+        there are no columns found meeting the selection criteria. If False 
+        (default), all columns from the input dataframe will be returned.
+
+
     NOTE: This function can be used to identify and then re-type catergorical
     columns. Run the function with the following parameters, change the data 
     types of know categorical values to 'category', then re-run this function, 
@@ -395,10 +429,10 @@ def get_column_values_stats(
     # get rowcount
     num_recs = len(df)
     
+    # ensure all use_cols are actually present in df
+    use_cols = [col for col in get_cols if col in df.columns]
     # if no columns presented, get all columns from df
-    use_cols = df.columns if len(get_cols) == 0 else get_cols
-    # ensure use_cols are actually present in df
-    cols = [col for col in use_cols if col in df.columns]
+    cols = df.columns if len(use_cols) == 0 and allow_zero_cols==False else get_cols
     
     # make df for all columns, exclude target column if passed
     df_cols = pd.DataFrame(cols, columns=['cols'])
@@ -406,18 +440,18 @@ def get_column_values_stats(
     
     # get statistics on all columns
     df_cols['dtype'] = df_cols.cols.apply(lambda x: df[x].dtype)
-    df_cols['row_values'] = df_cols.cols.apply(lambda x: df[x].count())
-    df_cols['rows_missing'] = num_recs - df_cols.row_values
-    df_cols['pct_missing'] = df_cols.rows_missing / num_recs
-    df_cols['nuniques'] = df_cols.cols.apply(lambda x: df[x].nunique())
+    df_cols['num_rows_values'] = df_cols.cols.apply(lambda x: df[x].count())
+    df_cols['num_rows_missing'] = num_recs - df_cols.num_rows_values
+    df_cols['pct_rows_missing'] = df_cols.num_rows_missing / num_recs
+    df_cols['num_uniques'] = df_cols.cols.apply(lambda x: df[x].nunique())
     
     # get unique valeues for columns within unique value limits
-    df_cats = df_cols[df_cols.nuniques <= max_uniques]
-    df_cats['uniques'] = df_cats.cols.apply(lambda x: df[x].unique())
+    df_cats = df_cols[df_cols.num_uniques <= max_uniques]
+    df_cats['unique_values'] = df_cats.cols.apply(lambda x: df[x].unique())
     
     # merge and set index
     join_type = 'inner' if limit_to_max else 'left'
-    df_cols = df_cols.join(df_cats.uniques, how=join_type)
+    df_cols = df_cols.join(df_cats.unique_values, how=join_type)
     return df_cols.set_index('cols')
 
 

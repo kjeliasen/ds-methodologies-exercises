@@ -24,11 +24,7 @@ warnings.filterwarnings('ignore')
 ### local imports                                                           ###
 ###############################################################################
 
-import acquire as acq
-import prepare as prep
-
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
-from acquire import get_iris_data, get_titanic_data
 from dfo import DFO
 
 
@@ -56,25 +52,28 @@ def regression_errors(y, yhat):
     total sum of squares (TSS), mean squared error (MSE) and root mean squared 
     error (RMSE).
     '''
-    ESS = sum((yhat - y.mean())**2)
-    MSE = mean_squared_error(y, yhat)
-    SSE = MSE*len(y)
-    TSS = ESS + SSE
-    RMSE = sqrt(MSE)
+    r_errors={}
+    r_errors['ESS'] = sum((yhat - y.mean())**2)
+    r_errors['MSE'] = mean_squared_error(y, yhat)
+    r_errors['SSE'] = r_errors['MSE']*len(y)
+    r_errors['TSS'] = r_errors['ESS'] + r_errors['SSE']
+    r_errors['RMSE'] = sqrt(r_errors['MSE'])
     
-    return SSE, ESS, TSS, MSE, RMSE
+    return r_errors
 
 ###############################################################################
-def make_baseline(df):
+def make_baseline(df, x_cols=[], y_col='target'):
     '''
     6. Write a function, baseline_mean_errors(y), that takes in your target, y, 
     computes the SSE, MSE & RMSE when yhat is equal to the mean of all y, and 
     returns the error values (SSE, MSE, and RMSE).
     '''
+    
     # copy dataframe
-    df_baseline = df[['x', 'y']]
+    df_baseline = df[x_cols]
+    df_baseline['y'] = df[[y_col]]
     # compute the overall mean of the y values and add to 'yhat' as our prediction
-    df_baseline['yhat'] = df_baseline['y'].mean()
+    df_baseline['yhat'] = df_baseline[y_col].mean()
     # compute the difference between y and yhat
     df_baseline['residual'] = df_baseline['yhat'] - df_baseline['y']
     # square that delta
@@ -82,8 +81,8 @@ def make_baseline(df):
     return df_baseline
 
 def baseline_mean_errors(df_baseline):
-    SSE, ESS, TSS, MSE, RMSE = regression_errors(df_baseline.y, df_baseline.yhat)
-    return SSE, ESS, TSS, MSE, RMSE
+    bl_errors = regression_errors(df_baseline.y, df_baseline.yhat)
+    return bl_errors
 
 
 ###############################################################################
