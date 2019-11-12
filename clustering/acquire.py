@@ -7,7 +7,6 @@ warnings.filterwarnings("ignore")
 
 import numpy as np
 import pandas as pd
-import pandas_profiling as pdspro
 
 
 ###############################################################################
@@ -72,7 +71,7 @@ def csv_df(csv, splain=local_settings.splain, **kwargs):
 
     Reads a csv file into a dataframe, then sends the dataframe to check_df().
     '''
-    csv = pd.read_csv(csv)
+    csv = pd.read_csv(csv, **kwargs)
     return check_df(csv, splain=splain, **kwargs)
 
 
@@ -88,7 +87,7 @@ def sql_df(sql, db, splain=local_settings.splain, **kwargs):
     return check_df(pd.read_sql(sql, db_url), splain=splain)
 
 @timeifdebug
-def check_df(dataframe, *args, splain=local_settings.splain, **kwargs):
+def check_df(dataframe, splain=local_settings.splain, **kwargs):
     '''
     check_df(dataframe, splain=local_settings.splain, **kwargs)
     RETURNS: dataframe
