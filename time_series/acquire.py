@@ -247,3 +247,11 @@ def output_payload_data(
     )
     
     return df
+
+
+def get_opsd_data(use_cache=True):
+    if use_cache and path.exists('opsd.csv'):
+        return pd.read_csv('opsd.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv')
+    df.to_csv('opsd.csv', index=False)
+    return df
