@@ -71,7 +71,7 @@ def frame_splain(
         *args, 
         topx=local_settings.topx, 
         maxcols=local_settings.maxcols, 
-        splain=local_settings.splain, 
+        splain=local_settings.splain,
         **kwargs
     ):
     '''
@@ -87,18 +87,24 @@ def frame_splain(
     RETURNS: Summary data of a dataframe, including shape, info, description, 
     and the top topx rows if column count is not more than maxcols
     '''
-    cols = df.shape[1]
-    max_x = min(topx, df.shape[0])
+
     if splain:
+
+        cols = df.shape[1]
+        max_x = min(topx, df.shape[0])
         print(title.upper(), 'SHAPE:')
-        print(df.shape, '\n')
+        print(df.shape)
+        print()
         print(title.upper(), 'INFO:')
-        print(df.info(), '\n')
+        print(df.info())
+        print()
         print(title.upper(), 'DESCRIPTION:')
-        print(df.describe().transpose(), '\n')
+        print(df.describe().transpose())
+        print()
         if cols <= maxcols:
             print(title.upper(), 'HEAD:')
-            print(df.head(max_x), '\n')
+            print(df.head(max_x))
+            print()
 
 
 def get_date_time_code(datetime=datetime.now(), in_format='%Y%d%m%H%M'):

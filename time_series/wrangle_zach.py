@@ -26,7 +26,7 @@ sect_urls = {
     },
 }
 
-def set_combo_data(splain=True, maxcols=100):
+def set_combo_data(splain=True, splain_inner=False, maxcols=16, debug=False):
 
     items_df = output_payload_data(
         target_table='items', 
@@ -34,10 +34,11 @@ def set_combo_data(splain=True, maxcols=100):
         show_log=False,
         sect_url_keys=sect_urls,
         sep=',',
-        debug=False, 
+        debug=debug, 
         use_cache=True,
         to_csv=False,
-        splain=splain)
+        splain=splain_inner
+        )
 
     stores_df = output_payload_data(
         target_table='stores', 
@@ -48,7 +49,8 @@ def set_combo_data(splain=True, maxcols=100):
         debug=False, 
         use_cache=True,
         to_csv=False,
-        splain=splain)
+        splain=splain_inner
+        )
     
     sales_df = output_payload_data(
         target_table='sales', 
@@ -59,7 +61,8 @@ def set_combo_data(splain=True, maxcols=100):
         debug=False, 
         use_cache=True,
         to_csv=False,
-        splain=splain)
+        splain=splain_inner
+        )
     
     combo_df = (sales_df
         .merge(
@@ -85,5 +88,5 @@ def set_combo_data(splain=True, maxcols=100):
     return df
     
 if __name__ == '__main__':
-    df=set_combo_data(splain=True)
+    df=set_combo_data(splain=True, splain_inner=False, debug=True)
     print(df.head(15))

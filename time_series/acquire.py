@@ -101,7 +101,7 @@ def check_df(dataframe, splain=local_settings.splain, **kwargs):
     will produce a report on the dataframe.
     '''
     dataframe.fillna(value=np.nan, inplace=True)
-    frame_splain(dataframe, splain=splain, **kwargs)
+    frame_splain(dataframe, splain=splain, debug=True, print_disp='display', **kwargs)
     return dataframe
 
 
@@ -139,12 +139,13 @@ def get_json_payload_data(
     to_csv=False,
     debug=False,
     splain=True,
+    maxcols=15,
     title='table'):
     
     # check for immediate exit
     if use_cache:
         if path.exists(csv_name):
-            df = check_df(pd.read_csv(csv_name), splain=splain, title=title)
+            df = check_df(pd.read_csv(csv_name), splain=splain, title=title, maxcols=maxcols)
             return df 
         to_csv = True
 
@@ -209,7 +210,7 @@ def get_json_payload_data(
         
         is_complete = True
     
-    df = check_df(tdf, splain=splain, title=title)
+    df = check_df(tdf, splain=splain, title=title, maxcols=maxcols)
 
     if to_csv:
         df.to_csv(
@@ -233,6 +234,7 @@ def output_payload_data(
     splain=True, 
     use_cache=True,
     to_csv=False,
+    maxcols=15,
     **kwargs):
     
     url_keys = sect_url_keys[target_table]
@@ -262,7 +264,9 @@ def output_payload_data(
         to_csv=to_csv,
         use_cache=use_cache,
         show_log=show_log,
-        debug=debug
+        debug=debug,
+        splain=splain,
+        maxcols=maxcols,
     )
     
     return df
@@ -272,7 +276,8 @@ def get_web_csv_data(
     csv_name='opsd.csv', 
     csv_url='https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv', 
     use_cache=True, 
-    splain=local_settings.splain
+    splain=local_settings.splain,
+
     ):
 
     if use_cache and path.exists(csv_name):
