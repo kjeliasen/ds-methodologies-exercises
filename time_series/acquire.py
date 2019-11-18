@@ -111,7 +111,7 @@ def check_df(dataframe, splain=local_settings.splain, **kwargs):
 ### web-scraping functions                                                  ###
 ###############################################################################
 
-def get_val_from_key(dict, key='key', keys=None):
+def get_val_from_key(dict={}, keys=None, key='key'):
     if keys is None:
         keys = dict.keys()
     return dict[key] if key in keys else None
@@ -134,12 +134,22 @@ def get_json_payload_data(
     url_prev_key='previous_page',
     url_get_page='?page=',
     sep=',',
+    show_log=False, 
+    use_cache=True,
     to_csv=False,
-    show_log=False,
-    debug=False):
+    debug=False,
+    splain=True,
+    title='table'):
     
+    # check for immediate exit
+    if use_cache:
+        if path.exists(csv_name):
+            df = check_df(pd.read_csv(csv_name), splain=splain, title=title)
+            return df 
+        to_csv = True
+
     # Setup df
-    df = pd.DataFrame()
+    tdf = pd.DataFrame()
 
     # Initialize variables
     cur_page = beg_page
@@ -162,20 +172,20 @@ def get_json_payload_data(
         json_keys = response_json.keys()
         
         # Get payload
-        payload = get_val_from_key(dict=response_json, key=data_key, keys=json_keys)
+        payload = get_val_from_key(dict=response_json, keys=json_keys, key=data_key)
         if payload is None:
             break
 
         payload_keys = payload.keys()
         
         # Set navigation values
-        on_page = get_val_from_key(dict=payload, key=on_page_key, keys=payload_keys)
-        of_pages = get_val_from_key(dict=payload, key=of_pages_key, keys=payload_keys)
-        url_next = get_val_from_key(dict=payload, key=url_next_key, keys=payload_keys)
-        url_prev = get_val_from_key(dict=payload, key=url_prev_key, keys=payload_keys)
+        on_page = get_val_from_key(dict=payload, keys=payload_keys, key=on_page_key)
+        of_pages = get_val_from_key(dict=payload, keys=payload_keys, key=of_pages_key)
+        url_next = get_val_from_key(dict=payload, keys=payload_keys, key=url_next_key)
+        url_prev = get_val_from_key(dict=payload, keys=payload_keys, key=url_prev_key)
         
         # Get target data
-        target_data = get_val_from_key(dict=payload, key=sect_key, keys=payload_keys)
+        target_data = get_val_from_key(dict=payload, keys=payload_keys, key=sect_key)
         if target_data is None:
             break
         
@@ -187,7 +197,7 @@ def get_json_payload_data(
             print('index is missing')
             break
         
-        df = df.append(page_df, verify_integrity=True)
+        tdf = tdf.append(page_df, verify_integrity=True)
 
         if url_next is None:
             keep_going = False
@@ -198,7 +208,9 @@ def get_json_payload_data(
             next_url = None
         
         is_complete = True
-        
+    
+    df = check_df(tdf, splain=splain, title=title)
+
     if to_csv:
         df.to_csv(
             path_or_buf=csv_name, 
@@ -214,11 +226,13 @@ def get_json_payload_data(
 def output_payload_data(
     target_table='items', 
     base_url='https://python.zach.lol',
-    to_csv=False,
     show_log=False,
     sect_url_keys={},
     sep=',',
     debug=False,
+    splain=True, 
+    use_cache=True,
+    to_csv=False,
     **kwargs):
     
     url_keys = sect_url_keys[target_table]
@@ -243,8 +257,10 @@ def output_payload_data(
         url_next_key='next_page',
         url_prev_key='previous_page',
         url_get_page='?page=',
+        title=target_table,
         sep=sep,
         to_csv=to_csv,
+        use_cache=use_cache,
         show_log=show_log,
         debug=debug
     )
@@ -252,9 +268,15 @@ def output_payload_data(
     return df
 
 
-def get_opsd_data(use_cache=True):
-    if use_cache and path.exists('opsd.csv'):
-        return pd.read_csv('opsd.csv')
-    df = pd.read_csv('https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv')
-    df.to_csv('opsd.csv', index=False)
+def get_web_csv_data(
+    csv_name='opsd.csv', 
+    csv_url='https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv', 
+    use_cache=True, 
+    splain=local_settings.splain
+    ):
+
+    if use_cache and path.exists(csv_name):
+        return check_df(pd.read_csv(csv_name), splain=splain)
+    df = check_df(pd.read_csv(csv_url), splain=splain, title=csv_name)
+    df.to_csv(csv_name, index=False)
     return df
