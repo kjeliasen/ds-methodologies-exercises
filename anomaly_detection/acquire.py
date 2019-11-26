@@ -2,11 +2,21 @@
 ### pthon imports                                                           ###
 ###############################################################################
 
-import warnings
-warnings.filterwarnings("ignore")
-
 import numpy as np
 import pandas as pd
+import math
+from sklearn import metrics
+
+from scipy.stats import entropy
+
+import warnings
+warnings.filterwarnings("ignore")
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+# %matplotlib inline #<-- uncomment in Jupyter, comment in py
+import seaborn as sns
+
+
 import requests
 import json
 
