@@ -1,0 +1,610 @@
+97.105.19.61
+['Texas', 'San Antonio', 'Codeup LLC']
+71.137.146.71
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+209.205.123.242
+['Texas', 'Dallas', 'Servers.com Inc.']
+192.171.117.210
+['Texas', 'San Antonio', 'Aethernet LLC']
+12.189.101.90
+['California', 'San Francisco', 'AT&amp;T Services Inc.']
+104.193.225.250
+['Texas', 'Dallas', 'Catalyst Host']
+12.247.3.42
+['Texas', 'San Antonio', 'AT&amp;T Internet Services']
+174.207.5.52
+['Oklahoma', 'Guymon', 'Verizon Wireless']
+172.3.220.202
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+107.77.100.125
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+96.8.150.23
+['Texas', 'New Braunfels', 'Guadalupe Valley Telephone Cooperative Inc.']
+24.26.254.147
+['Texas', 'San Antonio', 'Charter Communications Inc']
+72.191.50.176
+['Texas', 'Leon Valley', 'Charter Communications Inc']
+108.65.244.91
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+76.185.247.126
+['Texas', 'San Antonio', 'Charter Communications Inc']
+107.204.132.6
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.174.155.172
+['Texas', 'Universal City', 'Charter Communications Inc']
+72.179.161.39
+['Texas', 'San Antonio', 'Charter Communications Inc']
+72.177.226.58
+['Texas', 'San Antonio', 'Charter Communications Inc']
+174.207.1.185
+['Texas', 'Plainview', 'Verizon Wireless']
+70.123.231.211
+['Texas', 'Universal City', 'Charter Communications Inc']
+72.191.29.130
+['Texas', 'San Antonio', 'Charter Communications Inc']
+65.36.105.55
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+12.247.3.50
+['Texas', 'San Antonio', 'AT&amp;T Internet Services']
+173.173.127.101
+['Texas', 'San Antonio', 'Charter Communications Inc']
+173.127.33.241
+['Texas', 'Houston', 'Sprint Communications Inc.']
+162.232.155.19
+['Texas', 'El Paso', 'AT&amp;T Corp.']
+99.203.26.41
+['Texas', 'Houston', 'Sprint Communications Inc.']
+96.8.179.59
+['Texas', 'San Antonio', 'Guadalupe Valley Telephone Cooperative Inc.']
+70.114.139.150
+['Texas', 'Round Rock', 'Charter Communications Inc']
+72.181.117.226
+['Texas', 'San Antonio', 'Charter Communications Inc']
+71.42.140.139
+['Texas', 'San Antonio', 'Starbucks']
+45.22.97.134
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.173.104.57
+['Texas', 'San Antonio', 'Charter Communications Inc']
+104.53.201.99
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.174.159.45
+['Texas', 'Universal City', 'Charter Communications Inc']
+67.10.161.55
+['Texas', 'San Antonio', 'Charter Communications Inc']
+184.226.6.201
+['Texas', 'Houston', 'Sprint Communications Inc.']
+76.211.179.43
+['Connecticut', 'Wallingford', 'AT&amp;T Corp.']
+24.160.159.122
+['Texas', 'San Antonio', 'Charter Communications Inc']
+66.69.62.219
+['Texas', 'San Antonio', 'Charter Communications Inc']
+209.205.122.186
+['Texas', 'Dallas', 'Servers.com Inc.']
+24.153.137.59
+['Texas', 'San Antonio', 'Starbucks']
+67.10.168.76
+['Texas', 'San Antonio', 'Charter Communications Inc']
+70.123.209.40
+['Texas', 'San Antonio', 'Charter Communications Inc']
+67.198.116.192
+['Texas', 'San Marcos', 'Grande Communications San Marcos']
+98.6.204.195
+['Texas', 'San Antonio', 'Starbucks']
+24.155.140.118
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+162.205.226.57
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.173.100.228
+['Texas', 'San Antonio', 'Charter Communications Inc']
+65.36.111.91
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+184.203.148.135
+['Arizona', 'Phoenix', 'Sprint Communications Inc.']
+72.181.97.136
+['Texas', 'San Antonio', 'Charter Communications Inc']
+72.181.118.217
+['Texas', 'San Antonio', 'Charter Communications Inc']
+67.11.104.47
+['Texas', 'San Antonio', 'Charter Communications Inc']
+24.155.251.203
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+23.122.42.151
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+24.27.227.0
+['Texas', 'San Antonio', 'Charter Communications Inc']
+24.27.227.1
+['Texas', 'San Antonio', 'Charter Communications Inc']
+170.248.173.246
+['Texas', 'San Antonio', 'Accenture LLP']
+70.114.36.54
+['Texas', 'San Antonio', 'Charter Communications Inc']
+216.1.153.162
+['New Jersey', 'Newark', 'Verizon Communications Inc.']
+104.219.136.67
+['Texas', 'San Antonio', 'Rock Solid Internet &amp; Telephone']
+72.177.206.117
+['Texas', 'San Antonio', 'Charter Communications Inc']
+173.173.116.10
+['Texas', 'San Antonio', 'Charter Communications Inc']
+173.173.114.158
+['Texas', 'San Antonio', 'Charter Communications Inc']
+108.248.9.192
+['Texas', 'Richardson', 'AT&amp;T Corp.']
+72.48.111.7
+['Texas', 'San Marcos', 'Grande Communications San Antonio Hub']
+66.69.77.154
+['Texas', 'San Antonio', 'Charter Communications Inc']
+70.117.6.133
+['Texas', 'San Antonio', 'Charter Communications Inc']
+24.243.31.59
+['Texas', 'San Antonio', 'Charter Communications Inc']
+99.203.26.214
+['Texas', 'Houston', 'Sprint Communications Inc.']
+107.77.64.27
+['Texas', 'Victoria', 'AT&amp;T Mobility LLC']
+70.120.83.9
+['Texas', 'San Antonio', 'Charter Communications Inc']
+131.194.98.179
+['Texas', 'San Antonio', 'Trinity University']
+99.203.155.25
+['Texas', 'Houston', 'Sprint Communications Inc.']
+108.239.187.113
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.239.218.8
+['New Jersey', 'Piscataway', 'North American Cable Television and Internet LLC']
+170.248.173.247
+['Texas', 'San Antonio', 'Accenture LLP']
+209.205.122.182
+['Texas', 'Dallas', 'Servers.com Inc.']
+99.203.26.237
+['Texas', 'Houston', 'Sprint Communications Inc.']
+68.203.201.38
+['Texas', 'San Antonio', 'Charter Communications Inc']
+67.11.154.74
+['Texas', 'San Antonio', 'Charter Communications Inc']
+76.214.156.42
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+99.203.26.144
+['Texas', 'Houston', 'Sprint Communications Inc.']
+162.236.252.30
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+99.203.155.131
+['Texas', 'Houston', 'Sprint Communications Inc.']
+136.50.29.193
+['Texas', 'San Antonio', 'Google Fiber Inc.']
+107.207.7.120
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+67.11.144.38
+['Texas', 'San Antonio', 'Charter Communications Inc']
+23.127.174.69
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.127.67.70
+['Texas', 'Houston', 'Sprint Communications Inc.']
+72.178.96.177
+['Texas', 'New Braunfels', 'Charter Communications Inc']
+45.21.0.138
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+129.115.2.245
+['Texas', 'San Antonio', 'University of Texas at San Antonio']
+71.40.1.172
+['Texas', 'San Antonio', 'Starbucks']
+107.77.80.107
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+104.53.215.21
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+172.110.83.150
+['Texas', 'Hondo', 'CommZoom LLC']
+66.42.139.162
+['Ohio', 'Cincinnati', 'Fuse Internet Access']
+70.121.180.146
+['Texas', 'San Antonio', 'Charter Communications Inc']
+64.134.159.125
+['Texas', 'Austin', 'Wayport Inc.']
+174.207.2.105
+['Texas', 'Waco', 'Verizon Wireless']
+72.182.107.70
+['Texas', 'Austin', 'Charter Communications Inc']
+99.203.27.154
+['Texas', 'Houston', 'Sprint Communications Inc.']
+196.52.2.30
+['New York', 'New York City', 'LogicWeb Inc']
+66.69.124.135
+['Texas', 'San Antonio', 'Charter Communications Inc']
+196.52.2.70
+['New York', 'New York City', 'LogicWeb Inc']
+24.27.227.0
+['Texas', 'San Antonio', 'Charter Communications Inc']
+99.203.26.237
+['Texas', 'Houston', 'Sprint Communications Inc.']
+166.251.112.222
+['Texas', 'San Antonio', 'Wireless Data Service Provider Corporation']
+172.5.98.113
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+68.203.203.145
+['Texas', 'San Antonio', 'Charter Communications Inc']
+12.43.239.98
+['Texas', 'Pleasanton', 'Marriott Corporationattn Joh']
+170.248.173.245
+['Texas', 'San Antonio', 'Accenture LLP']
+72.48.6.70
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+67.11.96.101
+['Texas', 'San Antonio', 'Charter Communications Inc']
+196.52.2.49
+['New York', 'New York City', 'LogicWeb Inc']
+50.226.114.86
+['California', 'Palo Alto', 'Comcast Cable Communications LLC']
+104.5.159.83
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+216.177.181.227
+['Texas', 'San Antonio', 'GVTC-Dialup Dynamic Pool']
+172.85.200.202
+['Florida', 'Orlando', 'Granite Telecommunications LLC']
+70.121.188.16
+['Texas', 'San Antonio', 'Charter Communications Inc']
+99.203.155.59
+['Texas', 'Houston', 'Sprint Communications Inc.']
+173.127.112.106
+['Texas', 'Houston', 'Sprint Communications Inc.']
+184.226.30.104
+['Texas', 'Houston', 'Sprint Communications Inc.']
+173.174.178.51
+['Texas', 'San Antonio', 'Charter Communications Inc']
+24.242.163.11
+['Texas', 'San Antonio', 'Def Logix']
+174.207.7.252
+['Texas', 'Georgetown', 'Verizon Wireless']
+12.197.199.226
+['Texas', 'San Antonio', 'Texas Creative']
+50.250.214.161
+['California', 'San Francisco', 'Comcast Cable Communications LLC']
+173.127.13.65
+['Texas', 'Houston', 'Sprint Communications Inc.']
+24.26.238.218
+['Texas', 'San Antonio', 'Charter Communications Inc']
+66.69.68.137
+['Texas', 'San Antonio', 'Charter Communications Inc']
+76.185.131.226
+['Texas', 'San Antonio', 'Charter Communications Inc']
+166.137.118.89
+['Louisiana', 'Lafayette', 'AT&amp;T Mobility LLC']
+75.1.32.205
+['Texas', 'New Braunfels', 'AT&amp;T Corp.']
+104.191.1.102
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+100.35.67.162
+['New York', 'New York City', 'Verizon Communications Inc.']
+166.137.136.50
+['Texas', 'Tyler', 'AT&amp;T Mobility LLC']
+174.207.17.250
+['Texas', 'Odessa', 'Verizon Wireless']
+72.181.99.132
+['Texas', 'San Antonio', 'Charter Communications Inc']
+66.25.81.21
+['Texas', 'San Antonio', 'Charter Communications Inc']
+24.160.133.222
+['Texas', 'San Antonio', 'Charter Communications Inc']
+70.121.171.184
+['Texas', 'San Antonio', 'Charter Communications Inc']
+141.150.59.235
+['New Jersey', 'Rahway', 'Verizon Communications Inc.']
+166.137.125.75
+['Texas', 'Odessa', 'AT&amp;T Mobility LLC']
+172.8.173.255
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+196.52.2.52
+['New York', 'New York City', 'LogicWeb Inc']
+104.48.141.55
+['Texas', 'Richardson', 'AT&amp;T Corp.']
+166.251.101.233
+['Texas', 'San Antonio', 'Wireless Data Service Provider Corporation']
+166.251.109.241
+['Texas', 'San Antonio', 'Wireless Data Service Provider Corporation']
+107.77.100.47
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+174.207.23.38
+['Texas', 'San Antonio', 'Verizon Wireless']
+107.77.100.79
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+174.207.0.15
+['Texas', 'Austin', 'Verizon Wireless']
+72.191.28.102
+['Texas', 'San Antonio', 'Charter Communications Inc']
+107.77.100.45
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+199.193.220.210
+['Texas', 'San Antonio', 'St Anthonys Hotel']
+107.77.72.112
+['Texas', 'Beaumont', 'AT&amp;T Mobility LLC']
+107.77.66.81
+['Texas', 'Sugar Land', 'AT&amp;T Mobility LLC']
+107.77.100.91
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+72.177.135.99
+['Texas', 'San Antonio', 'Charter Communications Inc']
+184.226.56.72
+['Texas', 'Houston', 'Sprint Communications Inc.']
+206.109.5.6
+['Colorado', 'Englewood', 'Jab Wireless Inc.']
+172.58.109.111
+['New Mexico', 'Albuquerque', 'T-Mobile USA Inc.']
+70.118.8.243
+['Texas', 'San Antonio', 'TWC Internal Spectrum']
+72.205.179.123
+['Louisiana', 'New Orleans', 'Cox Communications']
+209.205.120.222
+['Texas', 'Dallas', 'Servers.com Inc.']
+64.157.241.246
+['Texas', 'Georgetown', 'Level 3 Communications Inc.']
+12.175.215.244
+['Texas', 'San Antonio', 'AireSpring-Dimension Developm']
+104.53.206.121
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+75.104.65.31
+['Florida', 'Palm Coast', 'Viasat Inc.']
+99.52.78.67
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.127.6.41
+['Texas', 'Houston', 'Sprint Communications Inc.']
+107.77.100.113
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+173.127.23.253
+['Texas', 'Houston', 'Sprint Communications Inc.']
+72.181.108.134
+['Texas', 'San Antonio', 'Charter Communications Inc']
+67.10.158.134
+['Texas', 'San Antonio', 'Charter Communications Inc']
+173.175.117.44
+['Texas', 'San Antonio', 'Charter Communications Inc']
+69.166.87.217
+['Texas', 'New Braunfels', 'Guadalupe Valley Telephone Cooperative Inc.']
+173.123.57.183
+['Texas', 'Houston', 'Sprint Communications Inc.']
+73.158.71.104
+['California', 'Berkeley', 'Comcast Cable Communications LLC']
+72.190.221.42
+['Texas', 'Seguin', 'Charter Communications Inc']
+173.127.44.50
+['Texas', 'Houston', 'Sprint Communications Inc.']
+97.77.127.220
+['Texas', 'San Antonio', 'Starbucks']
+184.203.109.14
+['Arizona', 'Phoenix', 'Sprint Communications Inc.']
+99.203.155.223
+['Texas', 'Houston', 'Sprint Communications Inc.']
+173.149.206.146
+['Texas', 'Houston', 'Sprint Communications Inc.']
+70.121.173.47
+['Texas', 'San Antonio', 'Charter Communications Inc']
+184.226.106.149
+['Texas', 'Houston', 'Sprint Communications Inc.']
+131.194.184.154
+['Texas', 'San Antonio', 'Trinity University']
+166.251.112.88
+['Texas', 'San Antonio', 'Wireless Data Service Provider Corporation']
+107.77.80.85
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+166.137.125.28
+['Texas', 'Odessa', 'AT&amp;T Mobility LLC']
+97.77.16.42
+['Texas', 'San Antonio', 'Charter Communications Inc']
+99.203.27.36
+['Texas', 'Houston', 'Sprint Communications Inc.']
+131.194.184.123
+['Texas', 'San Antonio', 'Trinity University']
+99.200.159.181
+['Texas', 'Fort Worth', 'Sprint Communications Inc.']
+71.78.62.179
+['Texas', 'San Antonio', 'Starbucks']
+174.207.3.185
+['Texas', 'Odessa', 'Verizon Wireless']
+173.173.100.232
+['Texas', 'San Antonio', 'Charter Communications Inc']
+68.241.59.80
+['Georgia', 'Atlanta', 'Sprint Communications Inc.']
+64.134.30.175
+['Texas', 'Austin', 'Wayport Inc.']
+63.97.8.66
+['Colorado', 'Brighton', 'Target Corporation']
+173.239.232.81
+['Texas', 'Plano', 'North American Cable Television and Internet LLC']
+71.137.145.92
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+70.118.34.50
+['Texas', 'San Antonio', 'Texas Research &amp; Technology Foundation']
+24.173.208.242
+['Texas', 'Plano', 'Pearl Owners Association']
+166.137.139.56
+['Arkansas', 'Fayetteville', 'AT&amp;T Mobility LLC']
+45.22.96.223
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+99.203.26.86
+['Texas', 'Houston', 'Sprint Communications Inc.']
+99.203.26.234
+['Texas', 'Houston', 'Sprint Communications Inc.']
+174.207.13.82
+['California', 'San Diego', 'Verizon Wireless']
+173.174.223.192
+['Texas', 'San Antonio', 'Charter Communications Inc']
+107.77.66.47
+['Texas', 'Sugar Land', 'AT&amp;T Mobility LLC']
+107.167.109.95
+['California', 'San Mateo', 'Opera Software Americas LLC']
+172.58.100.127
+['Texas', 'Houston', 'T-Mobile USA Inc.']
+208.54.86.193
+['Texas', 'Dallas', 'T-Mobile USA Inc.']
+173.173.119.75
+['Texas', 'San Antonio', 'Charter Communications Inc']
+70.117.9.9
+['Texas', 'San Antonio', 'Charter Communications Inc']
+172.3.29.85
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+172.58.100.195
+['Texas', 'Houston', 'T-Mobile USA Inc.']
+166.137.125.49
+['Texas', 'Odessa', 'AT&amp;T Mobility LLC']
+172.56.7.193
+['Texas', 'Waxahachie', 'T-Mobile USA Inc.']
+70.120.93.125
+['Texas', 'San Antonio', 'Charter Communications Inc']
+172.58.102.235
+['Florida', 'Clearwater', 'T-Mobile USA Inc.']
+107.77.100.15
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+24.130.120.24
+['California', 'Berkeley', 'Comcast Cable Communications LLC']
+67.11.16.255
+['Texas', 'New Braunfels', 'Charter Communications Inc']
+107.204.52.24
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+67.10.132.181
+['Texas', 'San Antonio', 'Charter Communications Inc']
+104.190.250.60
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+172.127.183.32
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+76.185.228.75
+['Texas', 'San Antonio', 'Charter Communications Inc']
+67.10.153.249
+['Texas', 'San Antonio', 'Charter Communications Inc']
+104.180.86.144
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+107.77.105.97
+['Texas', 'Kingsville', 'AT&amp;T Mobility LLC']
+108.178.64.170
+['Texas', 'Plano', 'Charter Communications Inc']
+64.148.247.227
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+187.220.23.224
+['Ciudad de Mexico', 'Cuajimalpa', 'Uninet S.A. de C.V.']
+173.239.232.41
+['Texas', 'Plano', 'North American Cable Television and Internet LLC']
+24.155.130.61
+['Texas', 'San Antonio', 'Grande Communications San Marcos']
+166.137.126.119
+['Texas', 'Marshall', 'AT&amp;T Mobility LLC']
+107.77.64.80
+['Texas', 'Victoria', 'AT&amp;T Mobility LLC']
+8.33.232.5
+['New Mexico', 'Jal', 'Level 3 Communications Inc.']
+76.185.182.91
+['Texas', 'San Antonio', 'Charter Communications Inc']
+72.179.132.10
+['Texas', 'El Paso', 'Charter Communications Inc']
+107.77.80.52
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+108.220.101.224
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+99.132.128.74
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+104.190.255.78
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+72.190.131.54
+['Texas', 'San Antonio', 'Charter Communications Inc']
+24.243.7.214
+['Texas', 'San Antonio', 'Charter Communications Inc']
+174.207.4.5
+['Texas', 'Austin', 'Verizon Wireless']
+173.174.198.2
+['Texas', 'San Antonio', 'Charter Communications Inc']
+68.206.249.115
+['Texas', 'San Antonio', 'Charter Communications Inc']
+99.158.247.126
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+108.192.182.223
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+70.125.151.73
+['Texas', 'San Antonio', 'Charter Communications Inc']
+70.158.100.177
+['Georgia', 'Atlanta', 'City of Atlanta Dept of AV - AEP LAN']
+70.114.7.210
+['Texas', 'New Braunfels', 'Charter Communications Inc']
+172.87.155.118
+['Texas', 'Austin', 'Charter Communications Inc']
+172.56.15.50
+['Texas', 'Houston', 'T-Mobile USA Inc.']
+196.52.39.2
+['Illinois', 'Chicago', 'LogicWeb Inc']
+76.185.157.10
+['Texas', 'San Antonio', 'Charter Communications Inc']
+196.52.39.32
+['Illinois', 'Chicago', 'LogicWeb Inc']
+24.155.24.134
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+173.123.4.140
+['Texas', 'Houston', 'Sprint Communications Inc.']
+67.79.15.43
+['Texas', 'Universal City', 'Starbucks']
+173.127.49.144
+['Texas', 'Houston', 'Sprint Communications Inc.']
+50.84.229.194
+['Texas', 'San Antonio', 'Texas Department of Information Resources']
+107.77.100.85
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+64.134.159.142
+['Texas', 'Austin', 'Wayport Inc.']
+99.203.155.147
+['Texas', 'Houston', 'Sprint Communications Inc.']
+72.178.121.254
+['Texas', 'San Antonio', 'Charter Communications Inc']
+184.226.102.210
+['Texas', 'Houston', 'Sprint Communications Inc.']
+173.127.108.144
+['Texas', 'Houston', 'Sprint Communications Inc.']
+107.77.72.127
+['Texas', 'Beaumont', 'AT&amp;T Mobility LLC']
+70.123.197.98
+['Texas', 'San Antonio', 'Charter Communications Inc']
+99.57.17.35
+['Texas', 'San Antonio', 'AT&amp;T Corp.']
+173.149.180.43
+['Texas', 'Houston', 'Sprint Communications Inc.']
+173.123.41.129
+['Texas', 'Houston', 'Sprint Communications Inc.']
+173.174.192.127
+['Texas', 'San Antonio', 'Charter Communications Inc']
+69.166.89.120
+['Texas', 'San Antonio', 'Guadalupe Valley Telephone Cooperative Inc.']
+97.77.161.196
+['Texas', 'San Antonio', 'Starbucks']
+76.185.175.160
+['Texas', 'San Antonio', 'Charter Communications Inc']
+172.56.15.203
+['Texas', 'Houston', 'T-Mobile USA Inc.']
+172.58.109.13
+['New Mexico', 'Albuquerque', 'T-Mobile USA Inc.']
+173.127.79.63
+['Texas', 'Houston', 'Sprint Communications Inc.']
+107.77.80.46
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+209.64.120.2
+['Texas', 'Universal City', 'Global the Source Ltd']
+107.77.66.96
+['Texas', 'Sugar Land', 'AT&amp;T Mobility LLC']
+166.137.143.91
+['Texas', 'DeSoto', 'AT&amp;T Mobility LLC']
+70.123.224.242
+['Texas', 'Universal City', 'Charter Communications Inc']
+209.194.208.150
+['Texas', 'El Paso', 'City of El Paso']
+107.77.80.125
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+107.77.72.63
+['Texas', 'Beaumont', 'AT&amp;T Mobility LLC']
+65.36.104.120
+['Texas', 'San Antonio', 'Grande Communications San Antonio Hub']
+136.62.15.120
+['Texas', 'Austin', 'Google Fiber Inc.']
+99.203.26.185
+['Texas', 'Houston', 'Sprint Communications Inc.']
+108.200.115.87
+['Texas', 'San Antonio', 'AT&amp;T Internet Services']
+207.68.209.17
+['Nebraska', 'Burwell', 'Nebraska Central Telephone Company']
+107.77.100.129
+['Texas', 'San Antonio', 'AT&amp;T Mobility LLC']
+67.11.48.25
+['Texas', 'San Antonio', 'Charter Communications Inc']
