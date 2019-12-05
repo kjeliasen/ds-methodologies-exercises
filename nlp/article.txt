@@ -1,0 +1,1538 @@
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>
+    /* The Modal (background) */
+    .modal_contact {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 8; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%;
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px !important;
+        padding-top: 0 !important;
+        /* border: 1px solid #888; */
+        text-align: center;
+        position: relative;
+        border-radius: 6px;
+    }
+
+    /* The Close Button */
+    .close {
+      left: 90%;
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    /* position: absolute; */
+    /* bottom: 86%; */
+    /* display: inline-block; */
+    /* padding-left: 5%; */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #myBtn {
+      background: #999999;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-weight: bold;
+      box-shadow: none;
+      border-radius: 4px;
+      border: none;
+      font-size: .8rem;
+      /* width: 8rem; */
+      height: 2rem;
+      line-height: 2rem;
+    }
+
+    .contact {
+      margin-bottom: 4%;
+      clear: both;
+    }
+  </style>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<link href="manifest.json" rel="manifest"/>
+<!-- Fallback to homescreen for Chrome   <39 on Android -->
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="inshorts" name="application-name"/>
+<link href="https://assets.inshorts.com/website_assets/images/favicon.png" rel="icon" sizes="192x192"/>
+<!-- Add to homescreen for Safari on iOS -->
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="#424242" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="inshorts" name="apple-mobile-web-app-title"/>
+<link href="https://assets.inshorts.com/website_assets/images/favicon.png" rel="apple-touch-icon"/>
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta content="fav/favicon.png" name="msapplication-TileImage"/>
+<meta content="#424242" name="msapplication-TileColor"/>
+<meta content="#424242" name="theme-color"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="#424242" name="msapplication-navbutton-color"/>
+<meta content="#424242" name="apple-mobile-web-app-status-bar-style"/>
+<link href="https://assets.inshorts.com/website_assets/images/favicon.png" rel="apple-touch-startup-image"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="app" name="twitter:card"/>
+<meta content="@inshorts" name="twitter:site"/>
+<meta content="@inshorts" name="twitter:creator"/>
+<meta content="Inshorts delivers news in less than 60 words, containing only the essential facts, compromising on anything that is close to opinionating and storytelling." name="twitter:description"/>
+<meta content="IN" name="twitter:app:country"/>
+<meta content="Inshorts - Stay Informed" name="twitter:app:name:iphone"/>
+<meta content="892146527" name="twitter:app:id:iphone"/>
+<meta content="nis://news" name="twitter:app:url:iphone"/>
+<meta content="Inshorts - Stay Informed" name="twitter:app:name:ipad"/>
+<meta content="892146527" name="twitter:app:id:ipad"/>
+<meta content="nis://news" name="twitter:app:url:ipad"/>
+<meta content="Inshorts - Stay Informed" name="twitter:app:name:googleplay"/>
+<meta content="com.nis.app" name="twitter:app:id:googleplay"/>
+<meta content="nis://news" name="twitter:app:url:googleplay"/>
+<meta content="Read short news updates in less than 60 words with inshorts. All daily news updates related to business, sports, technology, India, world and entertainment in English with inshorts" name="description"/>
+<link href="https://inshorts.com/en/read/" rel="canonical"/>
+<link href="https://inshorts.com/en/read/" reflang="en" rel="alternate"/>
+<meta content="app-id=892146527" name="apple-itunes-app"/>
+<meta content="app-id=com.nis.app" name="google-play-app"/>
+<title>Breaking News Headlines: Read All News Updates in English | Inshorts</title>
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Hind:500,600,400&amp;subset=latin,devanagari" rel="stylesheet" type="text/css"/>
+<link href="/dist/styles/main.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+<link href="/dist/styles/index.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+<link href="/dist/styles/read.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+<link href="/dist/styles/news-card.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+<link href="https://assets.inshorts.com/website_assets/images/favicon.png" rel="icon" type="image/png"/>
+<link href="/dist/manifest.json" rel="manifest"/>
+<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    let top_banner_slot;
+  </script>
+<!-- Top banner for desktop-->
+<script>
+    googletag.cmd.push(function() {
+      
+      
+        //Top banner for desktop
+        top_banner_slot = googletag.defineSlot('/142919096/inshorts_website_728x90', [728, 90], 'div-gpt-ad-1536585015617-0')
+        .addService(googletag.pubads())
+        .setCollapseEmptyDiv(true,true);
+      
+
+      googletag.pubads().disableInitialLoad();
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+<!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '822966517773327');
+    fbq('track', 'PageView');
+  </script>
+<noscript><img height="1" src="https://www.facebook.com/tr?id=822966517773327&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
+<!-- End Facebook Pixel Code -->
+</head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55157535-6', 'auto');
+  ga('send', 'pageview');  
+</script>
+<body>
+<!-- Begin comScore Tag -->
+<script>
+    var _comscore = _comscore || [];
+    _comscore.push({ c1: "2", c2: "28268321" });
+    (function() {
+      var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+      s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+      el.parentNode.insertBefore(s, el);
+    })();
+  </script>
+<noscript>
+<img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=28268321&amp;cv=2.0&amp;cj=1"/>
+</noscript>
+<!-- HEADER START -->
+<div class="header z-depth-1">
+<div class="menu clickable">
+<button class="c-hamburger c-hamburger--htx"><span>toggle menu</span></button><span class="unselectable">Menu</span>
+</div>
+<!--
+    <div class="search-wrapper hide-on-small-only">
+      <input class="search-box" placeholder="Search" id="search"/>
+      <i id="search_icon" class="material-icons search-icon">search</i>
+      <div class="search-box-ul">&nbsp;</div>
+    </div>
+    -->
+<a href="/"><img class="logo" src="https://assets.inshorts.com/website_assets/images/logo_inshorts.png"/></a>
+</div>
+<!-- HEADER END -->
+<!--SIDEBAR START -->
+<div class="hide-on-med-and-up sidebar-bg" style="display: none;"> </div>
+<div class="sidebar" style="overflow-y: scroll;">
+<div class="lang-bar" style="">
+<div class="lang-selector clickable">
+<a href="/en/read"><div class="lang-en selected">English</div></a>
+<a href="/hi/read"><div class="lang-hi">हिन्दी</div></a>
+</div>
+</div>
+<div>
+<div class="category-header">Categories</div>
+<ul class="category-list">
+<a href="/en/read" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToAllNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToAllNews' });"> <li class="active-category selected">All News</li> </a>
+<a href="/en/read/national" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToIndiaNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToIndiaNews' });"> <li class="active-category">India</li> </a>
+<a href="/en/read/business" onclick="ga(" send=""> <li class="active-category">Business</li> </a>
+<a href="/en/read/sports" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkTosportsNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToSportsNews' });"> <li class="active-category">Sports</li> </a>
+<a href="/en/read/world" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToworldNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToworldNews' });"> <li class="active-category">World</li> </a>
+<a href="/en/read/politics" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToworldNews', 'eventAction': 'clicked',   'eventLabel': 'RedirectedToworldNews' });"> <li class="active-category">Politics</li> </a>
+<a href="/en/read/technology" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkTotechnologyNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedTotechnologyNews' });"> <li class="active-category">Technology</li> </a>
+<a href="/en/read/startup" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkTostartupNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedTostartupNews' });"> <li class="active-category">Startup</li> </a>
+<a href="/en/read/entertainment" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToEntertainmentNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToEntertainmentNews' });"> <li class="active-category">Entertainment</li> </a>
+<a href="/en/read/miscellaneous" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToMiscellaneousNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToMiscellaneousNews' });"> <li class="active-category">Miscellaneous</li> </a>
+<a href="/en/read/hatke" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkTohatkeNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedTohatkeNews' });"> <li class="active-category">Hatke</li> </a>
+<a href="/en/read/science" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToscienceNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToscienceNews' });"> <li class="active-category">Science</li> </a>
+<a href="/en/read/automobile" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToautomobileNews', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToautomobileNews' });"> <li class="active-category">Automobile</li> </a>
+</ul>
+</div>
+</div>
+<!--SIDEBAR END -->
+<!-- BODY START -->
+<div class="container" style="min-height:550px;">
+<div class="row" style="padding-top:110px;">
+<div id="div-gpt-ad-1536585015617-0" style="height:90px; width:728px;margin: auto; margin-bottom: 1%;">
+<script>
+          googletag.cmd.push(function() { 
+            googletag.display('div-gpt-ad-1536585015617-0'); 
+            googletag.pubads().refresh([top_banner_slot]);
+          });
+          </script>
+</div>
+<div class="hide-on-med-and-down z-depth-1" style="margin-left : auto;margin-right : auto;margin-bottom: 32px;width : 900px;height:48px;background: #f44336">
+<div style="font-weight: 300;color:white !important;font-size:14px;margin-left: 48px;margin-top: 13px;position: absolute;display: block;">
+          For the best experience use <a href="https://inshorts.com/mobile" style="color:white;appearance: none;font-weight: 500;" target="_blank">inshorts</a> app on your smartphone
+        </div>
+<a href="https://itunes.apple.com/us/app/news-in-shorts/id892146527" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'DownloadApp', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToApplePlayStore' });" target="_blank"><img class="col l2 m2" src="https://assets.inshorts.com/website_assets/images/appstore.png" style="margin-top:5px;margin-left:550px;"/></a>
+<a href="https://play.google.com/store/apps/details?id=com.nis.app&amp;referrer=utm_source%3DNews%2520In%2520Shorts%2520Website" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'DownloadApp', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToGooglePlayStore' });" target="_blank"><img class="col l2 m2" src="https://assets.inshorts.com/website_assets/images/playstore.png" style="margin-top:5px;"/></a>
+</div>
+<div class="card-stack">
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/virat-a-good-player-but-cant-be-put-in-same-category-as-sachin-razzaq-1575565870516" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Anmol Sharma" itemprop="name"></span>
+</span>
+<span content="Virat a good player but can't be put in same category as Sachin: Razzaq" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575564215670_154.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575564215670_154.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/virat-a-good-player-but-cant-be-put-in-same-category-as-sachin-razzaq-1575565870516" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Virat%20a%20good%20player%20but%20can't%20be%20put%20in%20same%20category%20as%20Sachin%3A%20Razzaq)' });" style="color:#44444d!important">
+<span itemprop="headline">Virat a good player but can't be put in same category as Sachin: Razzaq</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/virat-a-good-player-but-cant-be-put-in-same-category-as-sachin-razzaq-1575565870516"><span class="short">short</span></a> by <span class="author">Anmol Sharma</span> / 
+      <span class="time" content="2019-12-05T17:11:10.000Z" itemprop="datePublished">10:41 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Former Pakistan all-rounder Abdul Razzaq has said that Virat Kohli is a good player for India but he cannot be placed in the same category as Sachin Tendulkar. "There were world-class players from 1992 to 2007. Now there are no longer world-class players. There is no depth in bowling, batting or fielding. It is all basic now," he added.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/virat-a-good-player-but-cant-be-put-in-same-category-as-sachin-razzaq-1575565870516"><span class="short">short</span></a> by <span class="author">Anmol Sharma</span> / 
+      <span class="time" content="2019-12-05T17:11:10.000Z" itemprop="dateModified">10:41 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.hindustantimes.com/cricket/he-is-a-good-player-but-former-pakistan-all-rounder-abdul-razzak-makes-big-virat-kohli-claim/story-44rzk4017Uri0HpuygX5zK.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Hindustan%20Times' });" target="_blank">Hindustan Times</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/who-doesnt-want-to-represent-india-in-t20-world-cup-ashwin-1575567651272" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Anmol Sharma" itemprop="name"></span>
+</span>
+<span content="Who doesn't want to represent India in T20 World Cup: Ashwin" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575565528466_667.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575565528466_667.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/who-doesnt-want-to-represent-india-in-t20-world-cup-ashwin-1575567651272" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Who%20doesn't%20want%20to%20represent%20India%20in%20T20%20World%20Cup%3A%20Ashwin)' });" style="color:#44444d!important">
+<span itemprop="headline">Who doesn't want to represent India in T20 World Cup: Ashwin</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/who-doesnt-want-to-represent-india-in-t20-world-cup-ashwin-1575567651272"><span class="short">short</span></a> by <span class="author">Anmol Sharma</span> / 
+      <span class="time" content="2019-12-05T17:40:51.000Z" itemprop="datePublished">11:10 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Off-spinner Ravichandran Ashwin has said that he wants to represent India in limited-overs cricket and wants to play the 2020 T20 World Cup. "Who does not want to represent India in the 2020 T20 World Cup. Yuvraj Singh came back for World T20 in 2014 and then in 2017 Champions Trophy. I am only 33," he added.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/who-doesnt-want-to-represent-india-in-t20-world-cup-ashwin-1575567651272"><span class="short">short</span></a> by <span class="author">Anmol Sharma</span> / 
+      <span class="time" content="2019-12-05T17:40:51.000Z" itemprop="dateModified">11:10 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.crictracker.com/ravichandran-ashwin-confident-of-making-a-return-to-white-ball-cricket/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'CricTracker' });" target="_blank">CricTracker</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/if-culprits-were-prosecuted-rape-victim-wouldnt-be-burnt-pawar-1575565206987" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Apaar Sharma" itemprop="name"></span>
+</span>
+<span content="If culprits were prosecuted, rape victim wouldn't be burnt: Pawar" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575561142838_146.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575561142838_146.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/if-culprits-were-prosecuted-rape-victim-wouldnt-be-burnt-pawar-1575565206987" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'If%20culprits%20were%20prosecuted%2C%20rape%20victim%20wouldn't%20be%20burnt%3A%20Pawar)' });" style="color:#44444d!important">
+<span itemprop="headline">If culprits were prosecuted, rape victim wouldn't be burnt: Pawar</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/if-culprits-were-prosecuted-rape-victim-wouldnt-be-burnt-pawar-1575565206987"><span class="short">short</span></a> by <span class="author">Apaar Sharma</span> / 
+      <span class="time" content="2019-12-05T17:00:06.000Z" itemprop="datePublished">10:30 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">NCP chief Sharad Pawar has said that if the culprits in the UP gangrape case were prosecuted in time, the Unnao incident in which the rape victim was set on fire wouldn't have happened. Pawar said that he was "extremely shocked" to hear about the incident. He added that the Home department of the Central government should take immediate cognisance.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/if-culprits-were-prosecuted-rape-victim-wouldnt-be-burnt-pawar-1575565206987"><span class="short">short</span></a> by <span class="author">Apaar Sharma</span> / 
+      <span class="time" content="2019-12-05T17:00:06.000Z" itemprop="dateModified">10:30 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://twitter.com/PawarSpeaks/status/1202491194195857408?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Twitter' });" target="_blank">Twitter</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/stop-eating-onion-garlic-meat-everything-will-be-saved-azam-khan-1575563547879" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Anmol Sharma" itemprop="name"></span>
+</span>
+<span content="Stop eating onion, garlic, meat; everything will be saved: Azam Khan" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575557440311_169.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575557440311_169.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/stop-eating-onion-garlic-meat-everything-will-be-saved-azam-khan-1575563547879" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Stop%20eating%20onion%2C%20garlic%2C%20meat%3B%20everything%20will%20be%20saved%3A%20Azam%20Khan)' });" style="color:#44444d!important">
+<span itemprop="headline">Stop eating onion, garlic, meat; everything will be saved: Azam Khan</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/stop-eating-onion-garlic-meat-everything-will-be-saved-azam-khan-1575563547879"><span class="short">short</span></a> by <span class="author">Anmol Sharma</span> / 
+      <span class="time" content="2019-12-05T16:32:27.000Z" itemprop="datePublished">10:02 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Amid rise in prices of onion across India, SP leader Azam Khan on Thursday said, "Stop eating onions, what is the compulsion to eat it? Our Jain brothers don’t eat." "Stop eating onions, stop eating garlic, stop eating meat, everything will be saved. A Queen had once said 'if they don’t have bread then let them eat cake'," he added.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/stop-eating-onion-garlic-meat-everything-will-be-saved-azam-khan-1575563547879"><span class="short">short</span></a> by <span class="author">Anmol Sharma</span> / 
+      <span class="time" content="2019-12-05T16:32:27.000Z" itemprop="dateModified">10:02 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://twitter.com/ANI/status/1202556335738408961?s=20&amp;utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'ANI' });" target="_blank">ANI</a></div>
+</div>
+</div>
+</div>
+<div id="div-gpt-ad-1536748319959-xna394fd-1" style="height:250px; width:900px; margin: auto; margin-bottom: 2%;">
+<script>
+        googletag.cmd.push(function() { 
+          //News banner for desktop
+          var slotIdWeb = 'div-gpt-ad-1536748319959-xna394fd-1';
+          var slot = googletag.defineSlot('/142919096/inshorts_website_900x250', [900, 250], slotIdWeb)
+          .addService(googletag.pubads())
+          .setCollapseEmptyDiv(true,true);
+
+          googletag.display('div-gpt-ad-1536748319959-xna394fd-1');
+          googletag.pubads().refresh([slot]);
+        });
+      </script>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/cctvs-panic-buttons-gps-to-be-installed-in-dtc-cluster-buses-cm-1575562453742" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Jigyasu" itemprop="name"></span>
+</span>
+<span content="CCTVs, panic buttons, GPS to be installed in DTC, cluster buses: CM" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575556340191_791.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575556340191_791.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/cctvs-panic-buttons-gps-to-be-installed-in-dtc-cluster-buses-cm-1575562453742" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'CCTVs%2C%20panic%20buttons%2C%20GPS%20to%20be%20installed%20in%20DTC%2C%20cluster%20buses%3A%20CM)' });" style="color:#44444d!important">
+<span itemprop="headline">CCTVs, panic buttons, GPS to be installed in DTC, cluster buses: CM</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/cctvs-panic-buttons-gps-to-be-installed-in-dtc-cluster-buses-cm-1575562453742"><span class="short">short</span></a> by <span class="author">Jigyasu</span> / 
+      <span class="time" content="2019-12-05T16:14:13.000Z" itemprop="datePublished">09:44 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Delhi CM Arvind Kejriwal on Thursday said his government will install CCTV cameras, panic buttons and GPS in the existing 5,500 DTC and cluster buses. The CM added that three CCTV cameras and 10 panic buttons will be installed in each bus. Kejriwal further said the new buses which are being procured already have CCTV cameras, panic buttons and GPS.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/cctvs-panic-buttons-gps-to-be-installed-in-dtc-cluster-buses-cm-1575562453742"><span class="short">short</span></a> by <span class="author">Jigyasu</span> / 
+      <span class="time" content="2019-12-05T16:14:13.000Z" itemprop="dateModified">09:44 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.livemint.com/news/india/cctv-cameras-panic-buttons-gps-to-be-installed-in-dtc-and-cluster-buses-arvind-kejriwal-11575552516367.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Livemint' });" target="_blank">Livemint</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/concerned-about-jk-leaders-detained-without-charges-chidambaram-1575567816873" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Apaar Sharma" itemprop="name"></span>
+</span>
+<span content="Concerned about J&amp;K leaders detained without charges: Chidambaram" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575564336195_588.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575564336195_588.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/concerned-about-jk-leaders-detained-without-charges-chidambaram-1575567816873" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Concerned%20about%20J%26K%20leaders%20detained%20without%20charges%3A%20Chidambaram)' });" style="color:#44444d!important">
+<span itemprop="headline">Concerned about J&amp;K leaders detained without charges: Chidambaram</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/concerned-about-jk-leaders-detained-without-charges-chidambaram-1575567816873"><span class="short">short</span></a> by <span class="author">Apaar Sharma</span> / 
+      <span class="time" content="2019-12-05T17:43:36.000Z" itemprop="datePublished">11:13 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Congress leader P Chidambaram on Thursday said that he was concerned about the political leaders of Jammu and Kashmir who have been detained without charges. Chidambaram said, "Freedom is indivisible. If we must preserve our freedom, we must fight for their freedom." He added that his first prayer was for Kashmiris after he was released from Tihar Jail on Wednesday.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/concerned-about-jk-leaders-detained-without-charges-chidambaram-1575567816873"><span class="short">short</span></a> by <span class="author">Apaar Sharma</span> / 
+      <span class="time" content="2019-12-05T17:43:36.000Z" itemprop="dateModified">11:13 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/govts-must-work-with-clear-intention-on-crime-against-women-kejriwal-1575566298430" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Apaar Sharma" itemprop="name"></span>
+</span>
+<span content="Govts must work with clear intention on crime against women: Kejriwal" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575563508491_319.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575563508491_319.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/govts-must-work-with-clear-intention-on-crime-against-women-kejriwal-1575566298430" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Govts%20must%20work%20with%20clear%20intention%20on%20crime%20against%20women%3A%20Kejriwal)' });" style="color:#44444d!important">
+<span itemprop="headline">Govts must work with clear intention on crime against women: Kejriwal</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/govts-must-work-with-clear-intention-on-crime-against-women-kejriwal-1575566298430"><span class="short">short</span></a> by <span class="author">Apaar Sharma</span> / 
+      <span class="time" content="2019-12-05T17:18:18.000Z" itemprop="datePublished">10:48 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Delhi Chief Minister Arvind Kejriwal said that all governments and probe agencies need to work with "clear intention" while dealing with crimes against women. Talking about rape incidents in the country, Kejriwal said, "Either such issues are suppressed due to political pressure or those who are involved in these cases are so powerful that attempts are made to protect them."</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/govts-must-work-with-clear-intention-on-crime-against-women-kejriwal-1575566298430"><span class="short">short</span></a> by <span class="author">Apaar Sharma</span> / 
+      <span class="time" content="2019-12-05T17:18:18.000Z" itemprop="dateModified">10:48 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://repository.inshorts.com/articles/en/PTI/ac9e9df1-6975-4fb5-a9f2-739a038c4be8?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'PTI' });" target="_blank">PTI</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/we-will-win-trump-on-impeachment-investigation-against-him-1575566728073" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Nandini Sinha" itemprop="name"></span>
+</span>
+<span content="We will win: Trump on impeachment investigation against him" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575564570322_429.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575564570322_429.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/we-will-win-trump-on-impeachment-investigation-against-him-1575566728073" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'We%20will%20win%3A%20Trump%20on%20impeachment%20investigation%20against%20him)' });" style="color:#44444d!important">
+<span itemprop="headline">We will win: Trump on impeachment investigation against him</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/we-will-win-trump-on-impeachment-investigation-against-him-1575566728073"><span class="short">short</span></a> by <span class="author">Nandini Sinha</span> / 
+      <span class="time" content="2019-12-05T17:25:28.000Z" itemprop="datePublished">10:55 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">US President Donald Trump on Thursday took to Twitter after House Speaker Nancy Pelosi directed to draft articles of impeachment against him. "The good thing is that the Republicans have NEVER been more united. We will win!" he tweeted. "The beyond important and seldom used act of Impeachment will be used routinely to attack future Presidents," he added.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/we-will-win-trump-on-impeachment-investigation-against-him-1575566728073"><span class="short">short</span></a> by <span class="author">Nandini Sinha</span> / 
+      <span class="time" content="2019-12-05T17:25:28.000Z" itemprop="dateModified">10:55 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://aninews.in/news/world/us/trump-lashes-out-at-pelosi-over-impeachment-announcement-says-we-will-win20191205213650/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'ANI' });" target="_blank">ANI</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/if-you-are-going-to-impeach-me-do-it-fast-trump-tells-democrats-1575565051093" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Nandini Sinha" itemprop="name"></span>
+</span>
+<span content="If you are going to impeach me, do it fast: Trump tells Democrats" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575562927681_813.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575562927681_813.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/if-you-are-going-to-impeach-me-do-it-fast-trump-tells-democrats-1575565051093" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'If%20you%20are%20going%20to%20impeach%20me%2C%20do%20it%20fast%3A%20Trump%20tells%20Democrats)' });" style="color:#44444d!important">
+<span itemprop="headline">If you are going to impeach me, do it fast: Trump tells Democrats</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/if-you-are-going-to-impeach-me-do-it-fast-trump-tells-democrats-1575565051093"><span class="short">short</span></a> by <span class="author">Nandini Sinha</span> / 
+      <span class="time" content="2019-12-05T16:57:31.000Z" itemprop="datePublished">10:27 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">US President Donald Trump on Thursday told the Democrats, "If you are going to impeach me, do it now, fast, so we can have a fair trial in the Senate." "They have no Impeachment case and are demeaning our Country. But nothing matters to them, they have gone crazy," he added. House Democrats will draft articles of impeachment against Trump.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/if-you-are-going-to-impeach-me-do-it-fast-trump-tells-democrats-1575565051093"><span class="short">short</span></a> by <span class="author">Nandini Sinha</span> / 
+      <span class="time" content="2019-12-05T16:57:31.000Z" itemprop="dateModified">10:27 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://twitter.com/realDonaldTrump/status/1202573673049272320?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Twitter' });" target="_blank">Twitter</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/6-muslim-men-jailed-in-malaysia-for-skipping-friday-prayers-to-go-for-picnic-1575563151508" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Nandini Sinha" itemprop="name"></span>
+</span>
+<span content="6 Muslim men jailed in Malaysia for skipping Friday prayers to go for picnic" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575561400347_581.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575561400347_581.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/6-muslim-men-jailed-in-malaysia-for-skipping-friday-prayers-to-go-for-picnic-1575563151508" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': '6%20Muslim%20men%20jailed%20in%20Malaysia%20for%20skipping%20Friday%20prayers%20to%20go%20for%20picnic)' });" style="color:#44444d!important">
+<span itemprop="headline">6 Muslim men jailed in Malaysia for skipping Friday prayers to go for picnic</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/6-muslim-men-jailed-in-malaysia-for-skipping-friday-prayers-to-go-for-picnic-1575563151508"><span class="short">short</span></a> by <span class="author">Nandini Sinha</span> / 
+      <span class="time" content="2019-12-05T16:25:51.000Z" itemprop="datePublished">09:55 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Six Muslim men have been fined and sentenced to one month in prison in Malaysia for skipping the compulsory Friday prayers in August and going for a picnic instead. The men, aged between 17 and 35, were found by the Terengganu Islamic Religious Affairs Department having a picnic with their families by a waterfall.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/6-muslim-men-jailed-in-malaysia-for-skipping-friday-prayers-to-go-for-picnic-1575563151508"><span class="short">short</span></a> by <span class="author">Nandini Sinha</span> / 
+      <span class="time" content="2019-12-05T16:25:51.000Z" itemprop="dateModified">09:55 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.timesnownews.com/international/article/six-malaysian-muslims-handed-one-month-jail-sentence-for-skipping-prayers-to-picnin/523019?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Times%20Now' });" target="_blank">Times Now</a></div>
+</div>
+</div>
+</div>
+<div id="div-gpt-ad-1536748319959-a2yvpy5z-1" style="height:250px; width:900px; margin: auto; margin-bottom: 2%;">
+<script>
+        googletag.cmd.push(function() { 
+          //News banner for desktop
+          var slotIdWeb = 'div-gpt-ad-1536748319959-a2yvpy5z-1';
+          var slot = googletag.defineSlot('/142919096/inshorts_website_900x250', [900, 250], slotIdWeb)
+          .addService(googletag.pubads())
+          .setCollapseEmptyDiv(true,true);
+
+          googletag.display('div-gpt-ad-1536748319959-a2yvpy5z-1');
+          googletag.pubads().refresh([slot]);
+        });
+      </script>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/only-one-spot-left-in-teams-pace-attack-for-t20-world-cup-kohli-1575564408222" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Ankur Taliyan" itemprop="name"></span>
+</span>
+<span content="Only one spot left in Team's pace attack for T20 World Cup: Kohli" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575557460051_671.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575557460051_671.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/only-one-spot-left-in-teams-pace-attack-for-t20-world-cup-kohli-1575564408222" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Only%20one%20spot%20left%20in%20Team's%20pace%20attack%20for%20T20%20World%20Cup%3A%20Kohli)' });" style="color:#44444d!important">
+<span itemprop="headline">Only one spot left in Team's pace attack for T20 World Cup: Kohli</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/only-one-spot-left-in-teams-pace-attack-for-t20-world-cup-kohli-1575564408222"><span class="short">short</span></a> by <span class="author">Ankur Taliyan</span> / 
+      <span class="time" content="2019-12-05T16:46:48.000Z" itemprop="datePublished">10:16 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">India captain Virat Kohli has said that there's only one spot to be filled in the Team's pace attack for the ICC T20 World Cup set to be held in Australia next year. "I think Bhuvi (Bhuvneshwar) and (Jasprit) Bumrah are experienced bowlers…(Mohammed) Shami is coming back," he added suggesting that the three have most likely sealed their places.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/only-one-spot-left-in-teams-pace-attack-for-t20-world-cup-kohli-1575564408222"><span class="short">short</span></a> by <span class="author">Ankur Taliyan</span> / 
+      <span class="time" content="2019-12-05T16:46:48.000Z" itemprop="dateModified">10:16 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.hindustantimes.com/cricket/only-one-spot-up-for-grabs-in-pace-attack-for-t20-world-cup-virat-kohli/story-a3UIQFxfbH2qRMkDp9659J.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Hindustan%20Times' });" target="_blank">Hindustan Times</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/eden-hazard-may-miss-el-clasico-after-ankle-fracture-1575565633687" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Ankur Taliyan" itemprop="name"></span>
+</span>
+<span content="Eden Hazard may miss El Clasico after ankle fracture" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575560923817_172.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575560923817_172.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/eden-hazard-may-miss-el-clasico-after-ankle-fracture-1575565633687" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Eden%20Hazard%20may%20miss%20El%20Clasico%20after%20ankle%20fracture)' });" style="color:#44444d!important">
+<span itemprop="headline">Eden Hazard may miss El Clasico after ankle fracture</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/eden-hazard-may-miss-el-clasico-after-ankle-fracture-1575565633687"><span class="short">short</span></a> by <span class="author">Ankur Taliyan</span> / 
+      <span class="time" content="2019-12-05T17:07:13.000Z" itemprop="datePublished">10:37 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Real Madrid forward Eden Hazard is likely to miss La Liga's El Clasico against Barcelona, to be held on December 19 at 12.30 am (IST), after being diagnosed with a fractured ankle. Hazard was injured during last week's 2-2 draw against Paris Saint-Germain in the Champions League group stage match. Today Madrid revealed that Hazard has "an incomplete external microfracture".
+</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/eden-hazard-may-miss-el-clasico-after-ankle-fracture-1575565633687"><span class="short">short</span></a> by <span class="author">Ankur Taliyan</span> / 
+      <span class="time" content="2019-12-05T17:07:13.000Z" itemprop="dateModified">10:37 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.hindustantimes.com/football/eden-hazard-to-miss-el-clasico-after-tests-reveal-ankle-fracture/story-0IKGLbmVBGLFxr2RTj6x1N.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Hindustan%20Times' });" target="_blank">Hindustan Times</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/parliamentary-panel-on-women-meets-facebook-to-discuss-cyber-crimes-1575567329969" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Sakshita Khosla" itemprop="name"></span>
+</span>
+<span content="Parliamentary panel on women meets Facebook to discuss cyber crimes" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575563983912_272.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575563983912_272.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/parliamentary-panel-on-women-meets-facebook-to-discuss-cyber-crimes-1575567329969" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Parliamentary%20panel%20on%20women%20meets%20Facebook%20to%20discuss%20cyber%20crimes)' });" style="color:#44444d!important">
+<span itemprop="headline">Parliamentary panel on women meets Facebook to discuss cyber crimes</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/parliamentary-panel-on-women-meets-facebook-to-discuss-cyber-crimes-1575567329969"><span class="short">short</span></a> by <span class="author">Sakshita Khosla</span> / 
+      <span class="time" content="2019-12-05T17:35:29.000Z" itemprop="datePublished">11:05 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">The Parliamentary Standing Committee on Women Empowerment on Thursday sought cooperation from Facebook to strengthen online vigilance in view of rising crimes against women on social media. The social media giant showed a presentation on working of the sites. The Committee was also made aware of the current system via which women can report cyber harassment or cyber bullying.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/parliamentary-panel-on-women-meets-facebook-to-discuss-cyber-crimes-1575567329969"><span class="short">short</span></a> by <span class="author">Sakshita Khosla</span> / 
+      <span class="time" content="2019-12-05T17:35:29.000Z" itemprop="dateModified">11:05 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://aninews.in/news/national/general-news/parliamentary-committee-on-women-seeks-cooperation-from-facebook-group-to-strengthen-online-vigilance20191205211108/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'ANI' });" target="_blank">ANI</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/fired-google-employees-to-charge-firm-with-unfair-labour-practices-1575562307869" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Anushka Dixit" itemprop="name"></span>
+</span>
+<span content="Fired Google employees to charge firm with unfair labour practices" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575558448164_268.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575558448164_268.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/fired-google-employees-to-charge-firm-with-unfair-labour-practices-1575562307869" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Fired%20Google%20employees%20to%20charge%20firm%20with%20unfair%20labour%20practices)' });" style="color:#44444d!important">
+<span itemprop="headline">Fired Google employees to charge firm with unfair labour practices</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/fired-google-employees-to-charge-firm-with-unfair-labour-practices-1575562307869"><span class="short">short</span></a> by <span class="author">Anushka Dixit</span> / 
+      <span class="time" content="2019-12-05T16:11:47.000Z" itemprop="datePublished">09:41 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">After Google fired four employees over violation of data security policies, the employees are planning to file labour charges against the tech giant. The employees argued that they weren't fired for violating the policies but for speaking against the company's practices. Google has been facing protests over issues including its work with the military and handling of sexual abuse complaints.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/fired-google-employees-to-charge-firm-with-unfair-labour-practices-1575562307869"><span class="short">short</span></a> by <span class="author">Anushka Dixit</span> / 
+      <span class="time" content="2019-12-05T16:11:47.000Z" itemprop="dateModified">09:41 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://thenextweb.com/tech/2019/12/04/fired-google-employees-will-charge-the-company-with-unfair-labor-practices/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'The%20Next%20Web' });" target="_blank">The Next Web</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/india-may-force-fb-tiktok-to-offer-user-verification-reports-1575565133480" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Aishwarya" itemprop="name"></span>
+</span>
+<span content="India may force FB, TikTok to offer user verification: Reports" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575546837445_212.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575546837445_212.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/india-may-force-fb-tiktok-to-offer-user-verification-reports-1575565133480" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'India%20may%20force%20FB%2C%20TikTok%20to%20offer%20user%20verification%3A%20Reports)' });" style="color:#44444d!important">
+<span itemprop="headline">India may force FB, TikTok to offer user verification: Reports</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/india-may-force-fb-tiktok-to-offer-user-verification-reports-1575565133480"><span class="short">short</span></a> by <span class="author">Aishwarya</span> / 
+      <span class="time" content="2019-12-05T16:58:53.000Z" itemprop="datePublished">10:28 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">India may soon force platforms like Facebook and TikTok to offer a user verification option, a potential step toward reining the spread of "fake news", Reuters reported. With the required mechanism in place, users will have a mark of verification similar to the blue check-mark on Twitter. However, the verification would be optional for users, the report added. </div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/india-may-force-fb-tiktok-to-offer-user-verification-reports-1575565133480"><span class="short">short</span></a> by <span class="author">Aishwarya</span> / 
+      <span class="time" content="2019-12-05T16:58:53.000Z" itemprop="dateModified">10:28 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://in.reuters.com/article/india-dataprotection/india-may-force-social-media-platforms-to-offer-user-verification-government-sources-idINKBN1Y90OQ?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Reuters' });" target="_blank">Reuters</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/6-tech-giants-contributed-to-$100-bn-tax-gap-in-10-yrs-study-1575566795734" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Aishwarya" itemprop="name"></span>
+</span>
+<span content="6 tech giants contributed to $100 bn 'tax gap' in 10 yrs: Study" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575552200791_869.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575552200791_869.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/6-tech-giants-contributed-to-$100-bn-tax-gap-in-10-yrs-study-1575566795734" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': '6%20tech%20giants%20contributed%20to%20%24100%20bn%20'tax%20gap'%20in%2010%20yrs%3A%20Study)' });" style="color:#44444d!important">
+<span itemprop="headline">6 tech giants contributed to $100 bn 'tax gap' in 10 yrs: Study</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/6-tech-giants-contributed-to-$100-bn-tax-gap-in-10-yrs-study-1575566795734"><span class="short">short</span></a> by <span class="author">Aishwarya</span> / 
+      <span class="time" content="2019-12-05T17:26:35.000Z" itemprop="datePublished">10:56 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">A study by a British organisation that certifies businesses for good tax conduct stated six of Silicon Valley's top tech giants avoided paying over $100 billion in taxes over the past decade. It analysed global tax payments made by Amazon, Facebook, Google, Apple, Netflix and Microsoft. The research found over a $100-billion difference between their provisions and actual taxes paid. </div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/6-tech-giants-contributed-to-$100-bn-tax-gap-in-10-yrs-study-1575566795734"><span class="short">short</span></a> by <span class="author">Aishwarya</span> / 
+      <span class="time" content="2019-12-05T17:26:35.000Z" itemprop="dateModified">10:56 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.dailymail.co.uk/news/article-7752209/Six-Silicon-Valleys-tech-giants-avoided-paying-100billion-taxes-2010.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Daily%20Mail' });" target="_blank">Daily Mail</a></div>
+</div>
+</div>
+</div>
+<div id="div-gpt-ad-1536748319959-fcikmr9i-1" style="height:250px; width:900px; margin: auto; margin-bottom: 2%;">
+<script>
+        googletag.cmd.push(function() { 
+          //News banner for desktop
+          var slotIdWeb = 'div-gpt-ad-1536748319959-fcikmr9i-1';
+          var slot = googletag.defineSlot('/142919096/inshorts_website_900x250', [900, 250], slotIdWeb)
+          .addService(googletag.pubads())
+          .setCollapseEmptyDiv(true,true);
+
+          googletag.display('div-gpt-ad-1536748319959-fcikmr9i-1');
+          googletag.pubads().refresh([slot]);
+        });
+      </script>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/sports-discovery-startup-sportido-raises-funds-from-ip-ventures-1575565237300" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Aishwarya" itemprop="name"></span>
+</span>
+<span content="Sports discovery startup Sportido raises funds from IP Ventures" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575559077179_600.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575559077179_600.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/sports-discovery-startup-sportido-raises-funds-from-ip-ventures-1575565237300" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Sports%20discovery%20startup%20Sportido%20raises%20funds%20from%20IP%20Ventures)' });" style="color:#44444d!important">
+<span itemprop="headline">Sports discovery startup Sportido raises funds from IP Ventures</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/sports-discovery-startup-sportido-raises-funds-from-ip-ventures-1575565237300"><span class="short">short</span></a> by <span class="author">Aishwarya</span> / 
+      <span class="time" content="2019-12-05T17:00:37.000Z" itemprop="datePublished">10:30 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Sports social network and marketplace startup Sportido raised an undisclosed amount in its second round of funding led by IP Ventures and SucSEED Venture Partners. Founded in 2015, the Noida-based startup helps players connect online and book venues to enjoy a sport. Sportido plans to further its reach to newer cities and enhance product offering.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/sports-discovery-startup-sportido-raises-funds-from-ip-ventures-1575565237300"><span class="short">short</span></a> by <span class="author">Aishwarya</span> / 
+      <span class="time" content="2019-12-05T17:00:37.000Z" itemprop="dateModified">10:30 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://inc42.com/buzz/sports-discovery-startup-sportido-raises-series-b-from-ip-ventures/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Inc42%20' });" target="_blank">Inc42 </a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/nykaa-posts-₹231-cr-profit-in-fy19-against-₹1771-cr-loss-in-fy18-1575562239695" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Anushka Dixit" itemprop="name"></span>
+</span>
+<span content="Nykaa posts ₹2.31 cr profit in FY19 against ₹17.71 cr loss in FY18" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575554846721_589.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575554846721_589.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/nykaa-posts-₹231-cr-profit-in-fy19-against-₹1771-cr-loss-in-fy18-1575562239695" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Nykaa%20posts%20%E2%82%B92.31%20cr%20profit%20in%20FY19%20against%20%E2%82%B917.71%20cr%20loss%20in%20FY18)' });" style="color:#44444d!important">
+<span itemprop="headline">Nykaa posts ₹2.31 cr profit in FY19 against ₹17.71 cr loss in FY18</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/nykaa-posts-₹231-cr-profit-in-fy19-against-₹1771-cr-loss-in-fy18-1575562239695"><span class="short">short</span></a> by <span class="author">Anushka Dixit</span> / 
+      <span class="time" content="2019-12-05T16:10:39.000Z" itemprop="datePublished">09:40 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Nykaa has posted a profit of ₹2.31 crore in FY19 compared to ₹17.71 crore losses during the last fiscal year, while its revenue grew 108% to ₹1,159.32 crore. The online beauty products startup is now reportedly valued at over ₹5,162 crore. The startup also reported a 99% increase in expenses to ₹1,157.85 crore in FY19 against ₹579.39 crore in FY18.
+</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/nykaa-posts-₹231-cr-profit-in-fy19-against-₹1771-cr-loss-in-fy18-1575562239695"><span class="short">short</span></a> by <span class="author">Anushka Dixit</span> / 
+      <span class="time" content="2019-12-05T16:10:39.000Z" itemprop="dateModified">09:40 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://yourstory.com/2019/12/nykaa-profitable-financial-year-revenue-growth?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'YourStory' });" target="_blank">YourStory</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/mc-demolishes-properties-of-man-who-published-honey-trap-case-details-1575562473849" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Shailesh" itemprop="name"></span>
+</span>
+<span content="MC demolishes properties of man who published honey trap case details" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575557140771_775.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575557140771_775.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/mc-demolishes-properties-of-man-who-published-honey-trap-case-details-1575562473849" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'MC%20demolishes%20properties%20of%20man%20who%20published%20honey%20trap%20case%20details)' });" style="color:#44444d!important">
+<span itemprop="headline">MC demolishes properties of man who published honey trap case details</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/mc-demolishes-properties-of-man-who-published-honey-trap-case-details-1575562473849"><span class="short">short</span></a> by <span class="author">Shailesh</span> / 
+      <span class="time" content="2019-12-05T16:14:33.000Z" itemprop="datePublished">09:44 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Four properties belonging to Jitendra Soni, who published details of the Madhya Pradesh honey trap case in his newspaper, were demolished by the Indore Municipal Corporation for violating building norms on Thursday. Soni's newspaper had published transcripts of chats and photos of accused and victims, including government officials and politicians, of the case that came to light in September.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/mc-demolishes-properties-of-man-who-published-honey-trap-case-details-1575562473849"><span class="short">short</span></a> by <span class="author">Shailesh</span> / 
+      <span class="time" content="2019-12-05T16:14:33.000Z" itemprop="dateModified">09:44 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://aninews.in/news/national/general-news/mp-honey-trap-case-municipal-corporation-demolishes-three-properties-of-jitu-soni20191205084424/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'ANI' });" target="_blank">ANI</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/16yearold-girl-killed-by-mp-man-for-rejecting-proposal-1575561703607" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Kirti Joshi" itemprop="name"></span>
+</span>
+<span content="16-year-old girl killed by MP man for rejecting proposal" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575553859569_967.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575553859569_967.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/16yearold-girl-killed-by-mp-man-for-rejecting-proposal-1575561703607" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': '16-year-old%20girl%20killed%20by%20MP%20man%20for%20rejecting%20proposal)' });" style="color:#44444d!important">
+<span itemprop="headline">16-year-old girl killed by MP man for rejecting proposal</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/16yearold-girl-killed-by-mp-man-for-rejecting-proposal-1575561703607"><span class="short">short</span></a> by <span class="author">Kirti Joshi</span> / 
+      <span class="time" content="2019-12-05T16:01:43.000Z" itemprop="datePublished">09:31 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">A 24-year-old man allegedly stabbed a 16-year-old girl to death after she rejected his proposal in Madhya Pradesh's Jabalpur district, police said. Shivkumar Choudhary killed her with a knife which he had bought from an online shopping site. Three months ago, the accused was arrested after the girl had complained of harassment. He was later granted bail in the case.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/16yearold-girl-killed-by-mp-man-for-rejecting-proposal-1575561703607"><span class="short">short</span></a> by <span class="author">Kirti Joshi</span> / 
+      <span class="time" content="2019-12-05T16:01:43.000Z" itemprop="dateModified">09:31 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="http://www.ptinews.com/news/11039177_Jilted-lover-stabs-teenaged-girl-to-death-in-MP.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'PTI' });" target="_blank">PTI</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/no-proposal-to-put-retirement-age-at-60-government-1575567763360" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Jigyasu" itemprop="name"></span>
+</span>
+<span content="No proposal to put retirement age at 60: Government" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575563247103_726.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575563247103_726.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/no-proposal-to-put-retirement-age-at-60-government-1575567763360" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'No%20proposal%20to%20put%20retirement%20age%20at%2060%3A%20Government)' });" style="color:#44444d!important">
+<span itemprop="headline">No proposal to put retirement age at 60: Government</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/no-proposal-to-put-retirement-age-at-60-government-1575567763360"><span class="short">short</span></a> by <span class="author">Jigyasu</span> / 
+      <span class="time" content="2019-12-05T17:42:43.000Z" itemprop="datePublished">11:12 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">The government is not considering to retire government officials at the age of 60, MoS for Personnel Jitendra Singh informed the Rajya Sabha on Thursday. Singh added that the government also has no proposal of retiring an official on completion of 33 years of service. As per reports, there are over 49 lakh central government employees.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/no-proposal-to-put-retirement-age-at-60-government-1575567763360"><span class="short">short</span></a> by <span class="author">Jigyasu</span> / 
+      <span class="time" content="2019-12-05T17:42:43.000Z" itemprop="dateModified">11:12 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://repository.inshorts.com/articles/en/PTI/f79b0a06-fc7b-4fc7-97c0-ef137a9c10dd?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'PTI' });" target="_blank">PTI</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/security-tightened-in-ayodhya-ahead-of-babri-demolition-anniversary-1575565948614" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Sakshita Khosla" itemprop="name"></span>
+</span>
+<span content="Security tightened in Ayodhya ahead of Babri demolition anniversary" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575560479656_82.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575560479656_82.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/security-tightened-in-ayodhya-ahead-of-babri-demolition-anniversary-1575565948614" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Security%20tightened%20in%20Ayodhya%20ahead%20of%20Babri%20demolition%20anniversary)' });" style="color:#44444d!important">
+<span itemprop="headline">Security tightened in Ayodhya ahead of Babri demolition anniversary</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/security-tightened-in-ayodhya-ahead-of-babri-demolition-anniversary-1575565948614"><span class="short">short</span></a> by <span class="author">Sakshita Khosla</span> / 
+      <span class="time" content="2019-12-05T17:12:28.000Z" itemprop="datePublished">10:42 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Security has been tightened in Ayodhya ahead of the 27th anniversary of demolition of the Babri Masjid on December 6. According to Ayodhya SSP Ashish Tiwari, 400 constables, 1500 home guards, Anti-Terrorism Squad, Local Intelligence Unit and fire teams have been deployed. "CCTV and drone cameras are... used for vigilance. We are... keeping an eye on social media," he said.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/security-tightened-in-ayodhya-ahead-of-babri-demolition-anniversary-1575565948614"><span class="short">short</span></a> by <span class="author">Sakshita Khosla</span> / 
+      <span class="time" content="2019-12-05T17:12:28.000Z" itemprop="dateModified">10:42 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.aninews.in/news/national/politics/ayodhya-security-tightened-ahead-of-babri-masjids-demolition-anniversary20191205183805/?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'ANI' });" target="_blank">ANI</a></div>
+</div>
+</div>
+</div>
+<div id="div-gpt-ad-1536748319959-bsnrltaj-1" style="height:250px; width:900px; margin: auto; margin-bottom: 2%;">
+<script>
+        googletag.cmd.push(function() { 
+          //News banner for desktop
+          var slotIdWeb = 'div-gpt-ad-1536748319959-bsnrltaj-1';
+          var slot = googletag.defineSlot('/142919096/inshorts_website_900x250', [900, 250], slotIdWeb)
+          .addService(googletag.pubads())
+          .setCollapseEmptyDiv(true,true);
+
+          googletag.display('div-gpt-ad-1536748319959-bsnrltaj-1');
+          googletag.pubads().refresh([slot]);
+        });
+      </script>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/untreated-sewage-leading-to-toxic-foaming-at-chennai-beaches-tnpcb-1575562417705" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Kirti Joshi" itemprop="name"></span>
+</span>
+<span content="Untreated sewage leading to toxic foaming at Chennai beaches: TNPCB" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575555573106_215.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575555573106_215.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/untreated-sewage-leading-to-toxic-foaming-at-chennai-beaches-tnpcb-1575562417705" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Untreated%20sewage%20leading%20to%20toxic%20foaming%20at%20Chennai%20beaches%3A%20TNPCB)' });" style="color:#44444d!important">
+<span itemprop="headline">Untreated sewage leading to toxic foaming at Chennai beaches: TNPCB</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/untreated-sewage-leading-to-toxic-foaming-at-chennai-beaches-tnpcb-1575562417705"><span class="short">short</span></a> by <span class="author">Kirti Joshi</span> / 
+      <span class="time" content="2019-12-05T16:13:37.000Z" itemprop="datePublished">09:43 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Tamil Nadu Pollution Control Board's (TNPCB) report on foam washing up at Chennai beaches indicates illegal letting out of untreated sewage into Adyar river has led to 'toxic' algal bloom which has resulted in accumulation of phosphates. "Sewage with rich phosphates from detergents and oils is the cause for frothing," an official said. TNPCB had collected four samples for analysis.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/untreated-sewage-leading-to-toxic-foaming-at-chennai-beaches-tnpcb-1575562417705"><span class="short">short</span></a> by <span class="author">Kirti Joshi</span> / 
+      <span class="time" content="2019-12-05T16:13:37.000Z" itemprop="dateModified">09:43 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.newindianexpress.com/cities/chennai/2019/dec/05/raw-sewage-leads-to-toxic-foaming-of-beaches-tnpcb-2071735.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'The%20New%20Indian%20Express' });" target="_blank">The New Indian Express</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/harping-on-hindumuslim-issues-wont-help-mamata-banerjee-1575564803167" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Kirti Joshi" itemprop="name"></span>
+</span>
+<span content="Harping on Hindu-Muslim issues won't help: Mamata Banerjee" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575558630600_169.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575558630600_169.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/harping-on-hindumuslim-issues-wont-help-mamata-banerjee-1575564803167" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Harping%20on%20Hindu-Muslim%20issues%20won't%20help%3A%20Mamata%20Banerjee)' });" style="color:#44444d!important">
+<span itemprop="headline">Harping on Hindu-Muslim issues won't help: Mamata Banerjee</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/harping-on-hindumuslim-issues-wont-help-mamata-banerjee-1575564803167"><span class="short">short</span></a> by <span class="author">Kirti Joshi</span> / 
+      <span class="time" content="2019-12-05T16:53:23.000Z" itemprop="datePublished">10:23 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">West Bengal Chief Minister Mamata Banerjee on Thursday said it was time to address the economic situation, instead of harping on Hindu-Muslim issues. "There is uncertainty everywhere. Unemployment and poverty have reached sky-high levels," Banerjee said. "At a time like this, I don't know if harping on Hindu-Muslim issues will yield any positive result," she further added.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/harping-on-hindumuslim-issues-wont-help-mamata-banerjee-1575564803167"><span class="short">short</span></a> by <span class="author">Kirti Joshi</span> / 
+      <span class="time" content="2019-12-05T16:53:23.000Z" itemprop="dateModified">10:23 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.deccanherald.com/national/national-politics/time-to-focus-on-economy-not-religious-issues-mamata-782982.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Deccan%20Herald' });" target="_blank">Deccan Herald</a></div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="news-card z-depth-1" itemscope="" itemtype="http://schema.org/NewsArticle">
+<span content="" itemid="https://inshorts.com/en/news/canadas-cppib-to-invest-up-to-$600-mn-through-niif-master-fund-1575567620737" itemprop="mainEntityOfPage" itemscope="" itemtype="https://schema.org/WebPage"></span>
+<span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">
+<span content="Anushka Dixit" itemprop="name"></span>
+</span>
+<span content="Canada's CPPIB to invest up to $600 mn through NIIF Master Fund" itemprop="description"></span>
+<span itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+<meta content="https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575562410692_48.jpg?" itemprop="url"/>
+<meta content="864" itemprop="width"/>
+<meta content="483" itemprop="height"/>
+</span>
+<span itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<span content="https://inshorts.com/" itemprop="url"></span>
+<span content="Inshorts" itemprop="name"></span>
+<span itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+<span content="https://assets.inshorts.com/inshorts/images/v1/variants/jpg/m/2018/11_nov/21_wed/img_1542823931298_497.jpg" itemprop="url"></span>
+<meta content="400" itemprop="width"/>
+<meta content="60" itemprop="height"/>
+</span>
+</span>
+<div class="news-card-image" style="background-image: url('https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2019/12_dec/5_thu/img_1575562410692_48.jpg?')">
+</div>
+<div class="news-card-title news-right-box">
+<a class="clickable" href="/en/news/canadas-cppib-to-invest-up-to-$600-mn-through-niif-master-fund-1575567620737" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'TitleOfNews', 'eventAction': 'clicked', 'eventLabel': 'Canada's%20CPPIB%20to%20invest%20up%20to%20%24600%20mn%20through%20NIIF%20Master%20Fund)' });" style="color:#44444d!important">
+<span itemprop="headline">Canada's CPPIB to invest up to $600 mn through NIIF Master Fund</span>
+</a>
+<div class="news-card-author-time news-card-author-time-in-title">
+<a href="/prev/en/news/canadas-cppib-to-invest-up-to-$600-mn-through-niif-master-fund-1575567620737"><span class="short">short</span></a> by <span class="author">Anushka Dixit</span> / 
+      <span class="time" content="2019-12-05T17:40:20.000Z" itemprop="datePublished">11:10 pm</span> on <span clas="date">05 Dec 2019,Thursday</span>
+</div>
+</div>
+<div class="news-card-content news-right-box">
+<div itemprop="articleBody">Canada Pension Plan Investment Board (CPPIB) will invest up to $600 million through the National Investment and Infrastructure Fund (NIIF) Master Fund. CPPIB will also become a shareholder in NIIF's investment management firm. With CPPIB's investment, NIIF's Master Fund now has $2.1 billion in commitments including investment from AustralianSuper and Ontario Teachers' Pension Plan.</div>
+<div class="news-card-author-time news-card-author-time-in-content">
+<a href="/prev/en/news/canadas-cppib-to-invest-up-to-$600-mn-through-niif-master-fund-1575567620737"><span class="short">short</span></a> by <span class="author">Anushka Dixit</span> / 
+      <span class="time" content="2019-12-05T17:40:20.000Z" itemprop="dateModified">11:10 pm</span> on <span class="date">05 Dec</span>
+</div>
+</div>
+<div class="news-card-footer news-right-box">
+<div class="read-more">read more at <a class="source" href="https://www.livemint.com/companies/news/cppib-to-invest-up-to-600-million-in-niif-s-master-fund-11575558595062.html?utm_campaign=fullarticle&amp;utm_medium=referral&amp;utm_source=inshorts " onclick="ga('send', {'hitType': 'event', 'eventCategory': 'ReadMore', 'eventAction': 'clicked', 'eventLabel': 'Livemint' });" target="_blank">Livemint</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="load-more-wrapper">
+<div class="clickable unselectable load-more z-depth-1 hoverable" id="load-more-btn" onclick="loadMoreNews()">Load More</div>
+<div class="clickable unselectable load-more" id="load-more-gif" style="display:none;"><img id="load-more-gif" src="https://assets.inshorts.com/website_assets/images/ajax-loader.gif"/></div>
+</div>
+<div class="my-red app-download-pane hide-on-large-only">
+<div class="container">
+<div class="row">
+<div class="col s12 center" style="color:white;font-weight: 300;font-size:14px;margin-top: 28px;margin-bottom: 18px;">
+              For the best experience use <a href="/mobile" style="color:white;appearance: none;font-weight: 500;" target="_blank">inshorts</a> app on your smartphone
+            </div>
+<div class="col offset-s2 s8">
+<a href="https://play.google.com/store/apps/details?id=com.nis.app&amp;referrer=utm_source%3DNews%2520In%2520Shorts%2520Website" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'DownloadApp', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToGooglePlayStore' });" target="_blank"><img class="col l4 m8 s12" src="https://assets.inshorts.com/website_assets/images/playstore.png"/></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BODY END -->
+<footer class="page-footer teals">
+<div class="container">
+<div class="row" style="margin-bottom: 0px; padding-bottom: 5px;">
+<div class="col offset-l3 l3 m4 s12 right social-admin">
+<div class="social-share"><a href="https://www.facebook.com/inshortsapp" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToFaceBookPage', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToFaceBook' });" target="_blank"><img src="https://assets.inshorts.com/website_assets/images/facebook.png"/></a></div>
+<div class="social-share"><a href="https://twitter.com/inshorts" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToTwitterPage', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToTwitter' });" target="_blank"><img src="https://assets.inshorts.com/website_assets/images/twitter.png"/></a></div>
+<div class="social-share"><a href="https://www.linkedin.com/company/news-in-shorts" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToLinkedinPage', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToLinkedin' });" target="_blank"><img src="https://assets.inshorts.com/website_assets/images/linkedin.png"/></a></div>
+</div>
+<div class="col m4 l3 s6 footer-left-pane">
+<div class="right"><img height="48px" src="https://assets.inshorts.com/website_assets/images/logo_footer.png" width="160px"/></div>
+<div class="copy-text">
+<span><span style="color:#cfcfcf;font-family: 'Conv_ClanPro-Bold'">inshorts</span> medialabs pvt. ltd.</span><br/>
+          ©<span style="font-size:12px">COPYRIGHT 2019</span>
+</div>
+</div>
+<div class="col m4 l3 s6 footer-right-pane">
+<div class="left clickable" id="contactUsBtn" style="margin-top: -5px;"><img height="48px" src="https://assets.inshorts.com/website_assets/images/contact_icon.png" width="132px"/></div>
+<div class="terms-text">
+<a class="tnc" href="/tnc" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToTermsAndConditionsAndPP', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToTermsAndConditions' });" style="color: #fff;" target="_blank"><span>Terms &amp; conditions</span><br/>
+<span>Privacy Policies</span>
+</a>
+<br/>
+<a class="tnc" href="/editorial_policy" onclick="ga('send', {'hitType': 'event', 'eventCategory': 'LinkToSitemap', 'eventAction': 'clicked', 'eventLabel': 'RedirectedToSitemap' });" style="color: #fff;" target="_blank">
+<span>Editorial Policy</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="modal_contact row" id="contactUsModal">
+<!-- Modal content -->
+<div class="modal-content col l4 m4 s8 offset-s2 offset-l4 offset-m4">
+<span class="close">×</span>
+<div class="contact">
+<a href="mailto:careers@inshorts.com?subject=Inshorts%20website%20contact%20form" target="_blank">
+<button id="myBtn">Contact Hiring Team</button>
+</a>
+</div>
+<div class="contact">
+<a href="mailto:Admin@inshorts.com?subject=Inshorts%20website%20contact%20form" target="_blank">
+<button id="myBtn">Contact Admin Team</button>
+</a>
+</div>
+<div class="contact">
+<a href="mailto:Marketing@inshorts.com?subject=Inshorts%20website%20contact%20form" target="_blank">
+<button id="myBtn">Contact Marketing Team</button>
+</a>
+</div>
+<div class="contact">
+<a href="mailto:Editorial@inshorts.com?subject=Inshorts%20website%20contact%20form" target="_blank">
+<button id="myBtn">Contact Editorial Team</button>
+</a>
+</div>
+<div class="contact">
+<a href="mailto:Sales@inshorts.com?subject=Inshorts%20website%20contact%20form" target="_blank">
+<button id="myBtn">Contact Sales Team</button>
+</a>
+</div>
+<div class="contact">
+<a href="mailto:Contact@inshorts.com?subject=Inshorts%20website%20contact%20form" target="_blank">
+<button id="myBtn">Contact For Any Other Query</button>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+var modal = document.getElementById('contactUsModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("contactUsBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<!-- Eliminate render-blocking JavaScript and CSS in above-the-fold content -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script src="/dist/scripts/index.js" type="text/javascript"></script>
+<script src="/dist/scripts/read.js" type="text/javascript"></script>
+<script src="/dist/scripts/jquery.scrolldepth.min.js"></script>
+<script type="text/javascript">
+
+    var min_news_id = "dbh6lyek-1";
+    function loadMoreNews(){
+      $("#load-more-btn").hide();
+      $("#load-more-gif").show();
+      $.post("/en/ajax/more_news",{'category':'','news_offset':min_news_id},function(data){
+          data = JSON.parse(data);
+          min_news_id = data.min_news_id||min_news_id;
+          $(".card-stack").append(data.html);
+      })
+      .fail(function(){alert("Error : unable to load more news");})
+      .always(function(){$("#load-more-btn").show();$("#load-more-gif").hide();});
+    }
+    jQuery.scrollDepth();
+  </script>
+<!-- Eliminate render-blocking JavaScript and CSS in above-the-fold content -->
+</body>
+</html>
