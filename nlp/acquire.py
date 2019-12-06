@@ -36,7 +36,8 @@ import json
 #from env import host, user, password
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 
-
+from wrangle_news_articles import get_news_articles
+from wrangle_codeup_blog import get_blog_articles
 
 ###############################################################################
 ### get db url                                                              ###
@@ -333,33 +334,51 @@ def get_file(
 
 
 @timeargsifdebug
-def get_souptext(
-    file_name='textfile.txt',
-    url='https://site-to-scrape.glitch.me/',
-    headers={'User-Agent': 'Example User Agent'},
-    soup_selector='p',
+def get_file(
+    file_name='path/file.txt',
+    cache=False,
+    cache_age=None
+    ):
+
+    if cache==False:
+        return None
+    
+    if path.exists(file_name):
+        with open(file_name) as f:
+            return f
+
+
+@timeargsifdebug
+def get_soup(
+    url='https://inshorts.com/en/read/',
+    headers={'User-Agent': 'Nothing suspicious'},
+    file_name='z_stash/article.txt',
     cache=True,
     cache_age=None,
+    soup_slurper='*'
 ):
     # if we already have the data, read it locally
     f = get_file(file_name=file_name, cache=cache, cache_age=cache_age)
     if f:
-        return f.read()
+        return BeautifulSoup(f.read())
 
     # otherwise go fetch the data
-    url = url
     response = get(url, headers=headers)
     soup = BeautifulSoup(response.text)
-    if soup_selector:
-        selection = soup.select(soup_selector)
-    else:
-        selection = soup
+    slurps = soup.select(soup_slurper)
 
     # save it for next time
     with open(file_name, 'w') as f:
-        f.write(selection.text)
+        f.write(str(slurps[0]))
+        if len(slurps)>1:
+            for slurp in slurps[1:]:
+                f.write('\n' + str(slurp))
+        
+    with open(file_name) as f:    
+        soup = BeautifulSoup(f.read())
+#     pd.to_csv(slurps, header=None, index=False)
 
-    return selection.text
+    return soup
 
 
 def get_web_csv_data(
