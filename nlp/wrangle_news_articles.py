@@ -6,9 +6,35 @@
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 # import acquire as acq
 
-def get_news_articles():
+
+default_news_urls = [
+        "https://inshorts.com/en/read/business",
+        "https://inshorts.com/en/read/sports",
+        "https://inshorts.com/en/read/technology",
+        "https://inshorts.com/en/read/entertainment"
+    ]
+
+
+def get_news_articles(
+    url='https://inshorts.com/en/read/', 
+    url_list=default_news_urls,
+    file_name_csv='./articles.csv',
+    file_name_bs='z_stash/articles.html',
+    headers={'User-Agent': 'Nothing suspicious'},
+    soup_slurper='.news-card',
+    cache=True,
+    cache_age=False
+):
     from acquire import get_soup
-    return make_dictionary_from_news_article()
+    return make_new_news_request(
+        url_list = url_list,
+        headers = headers,
+        file_name_csv = file_name_csv,
+        file_name_bs = file_name_bs,
+        cache = cache,
+        cache_age = cache_age,
+        soup_slurper = soup_slurper
+    )
 
 
 def make_dictionary_from_news_article(
@@ -19,6 +45,7 @@ def make_dictionary_from_news_article(
     cache=True,
     cache_age=False
 ):
+    from acquire import get_soup
     # make the request to the url variable
     # make a "soup" variable
     # isolate the title of the article, store it as a string called "title"
@@ -40,7 +67,6 @@ def make_dictionary_from_news_article(
     
     for article in articles:
         title = article.select("[itemprop='headline']")[0].get_text()
-#         print(title)
         content = article.select("[itemprop='articleBody']")[0].get_text()
         author = article.select(".author")[0].get_text()
         published_date = article.select(".time")[0]["content"]
@@ -58,18 +84,8 @@ def make_dictionary_from_news_article(
     return output
 
 
-# data = get_soup(
-#     url = 'https://inshorts.com/en/read/',
-#     headers = {'User-Agent': 'Nothing suspicious'},
-#     file_name = 'z_stash/article.html',
-#     soup_slurper='.news-card',
-#     cache=False,
-#     cache_age=False,
-#    )
-
-
-
 def make_new_news_request(
+    url_list=default_news_urls,
     file_name_csv='./articles.csv',
     file_name_bs='z_stash/articles.html',
     headers={'User-Agent': 'Nothing suspicious'},
@@ -77,12 +93,8 @@ def make_new_news_request(
     cache=True,
     cache_age=False
 ):
-    urls = [
-        "https://inshorts.com/en/read/business",
-        "https://inshorts.com/en/read/sports",
-        "https://inshorts.com/en/read/technology",
-        "https://inshorts.com/en/read/entertainment"
-    ]
+    import pandas as pd
+    urls = url_list
 
     output = []
     
@@ -100,12 +112,6 @@ def make_new_news_request(
     df=pd.DataFrame(output)
     df.to_csv(file_name_csv)
     return df
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

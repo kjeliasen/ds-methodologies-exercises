@@ -334,7 +334,7 @@ def get_file(
 
 
 @timeargsifdebug
-def get_file(
+def find_file(
     file_name='path/file.txt',
     cache=False,
     cache_age=None
@@ -343,9 +343,7 @@ def get_file(
     if cache==False:
         return None
     
-    if path.exists(file_name):
-        with open(file_name) as f:
-            return f
+    return path.exists(file_name)
 
 
 @timeargsifdebug
@@ -358,9 +356,10 @@ def get_soup(
     soup_slurper='*'
 ):
     # if we already have the data, read it locally
-    f = get_file(file_name=file_name, cache=cache, cache_age=cache_age)
-    if f:
-        return BeautifulSoup(f.read())
+    file_found = find_file(file_name=file_name, cache=cache, cache_age=cache_age)
+    if file_found:
+        with open(file_name) as f:
+            return BeautifulSoup(f.read())
 
     # otherwise go fetch the data
     response = get(url, headers=headers)

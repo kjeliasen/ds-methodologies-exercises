@@ -6,9 +6,36 @@
 from debug import local_settings, timeifdebug, timeargsifdebug, frame_splain
 # import acquire as acq
 
-def get_blog_articles():
+
+default_blog_urls = [
+        "https://codeup.com/codeups-data-science-career-accelerator-is-here/",
+        "https://codeup.com/data-science-myths/",
+        "https://codeup.com/data-science-vs-data-analytics-whats-the-difference/",
+        "https://codeup.com/10-tips-to-crush-it-at-the-sa-tech-job-fair/",
+        "https://codeup.com/competitor-bootcamps-are-closing-is-the-model-in-danger/",
+    ]
+
+
+def get_blog_articles(
+    url_list=default_blog_urls,
+    file_name_csv='./codeup_blog_posts.csv',
+    file_name_bs='z_stash/codeup_blog_posts.html',
+    headers = {'User-Agent': 'Nothing suspicious'},
+    cache=True,
+    cache_age=False,
+    soup_slurper='*'
+):
     from acquire import get_soup
-    return make_new_blog_request()
+    return make_new_blog_request(
+        url_list = url_list,
+        file_name_csv = file_name_csv,
+        file_name_bs = file_name_bs,
+        headers = headers,
+        cache = cache,
+        cache_age = cache_age,
+        soup_slurper = soup_slurper
+    )
+
 
 def make_dictionary_from_blog_article(
     url, 
@@ -18,6 +45,7 @@ def make_dictionary_from_blog_article(
     cache_age=False,
     soup_slurper='*'
 ):
+    from acquire import get_soup
     # make the request to the url variable
     # make a "soup" variable
     # isolate the title of the article, store it as a string called "title"
@@ -44,24 +72,17 @@ def make_dictionary_from_blog_article(
     }
 
 
-# def get_blog_articles():
-    
-
-
 def make_new_blog_request(
+    url_list=default_blog_urls,
     file_name_csv='./codeup_blog_posts.csv',
     file_name_bs='z_stash/codeup_blog_posts.html',
     headers = {'User-Agent': 'Nothing suspicious'},
     cache=True,
-    cache_age=False
+    cache_age=False,
+    soup_slurper='*'
 ):
-    urls = [
-        "https://codeup.com/codeups-data-science-career-accelerator-is-here/",
-        "https://codeup.com/data-science-myths/",
-        "https://codeup.com/data-science-vs-data-analytics-whats-the-difference/",
-        "https://codeup.com/10-tips-to-crush-it-at-the-sa-tech-job-fair/",
-        "https://codeup.com/competitor-bootcamps-are-closing-is-the-model-in-danger/",
-    ]
+    import pandas as pd
+    urls = url_list
 
     output = []
     
