@@ -21,7 +21,7 @@ def get_news_articles(
     file_name_csv='./articles.csv',
     file_name_bs='z_stash/articles.html',
     headers={'User-Agent': 'Nothing suspicious'},
-    soup_slurper='.news-card',
+    slurper='.news-card',
     cache=True,
     cache_age=False
 ):
@@ -33,7 +33,7 @@ def get_news_articles(
         file_name_bs = file_name_bs,
         cache = cache,
         cache_age = cache_age,
-        soup_slurper = soup_slurper
+        slurper = slurper
     )
 
 
@@ -41,7 +41,7 @@ def make_dictionary_from_news_article(
     url='https://inshorts.com/en/read/', 
     file_name='z_stash/articles.html',
     headers={'User-Agent': 'Nothing suspicious'},
-    soup_slurper='.news_card',
+    slurper='.news_card',
     cache=True,
     cache_age=False
 ):
@@ -60,10 +60,10 @@ def make_dictionary_from_news_article(
         file_name = file_name,
         cache = cache,
         cache_age = cache_age,
-        soup_slurper = soup_slurper
+        slurper = slurper
     )
     
-    articles = soup.select(soup_slurper)
+    articles = soup.select(slurper)
     
     for article in articles:
         title = article.select("[itemprop='headline']")[0].get_text()
@@ -89,7 +89,7 @@ def make_new_news_request(
     file_name_csv='./articles.csv',
     file_name_bs='z_stash/articles.html',
     headers={'User-Agent': 'Nothing suspicious'},
-    soup_slurper='.news-card',
+    slurper='.news-card',
     cache=True,
     cache_age=False
 ):
@@ -103,7 +103,7 @@ def make_new_news_request(
             make_dictionary_from_news_article(
                 url, 
                 file_name_bs, 
-                soup_slurper=soup_slurper,
+                slurper=slurper,
                 headers=headers, 
                 cache=cache, 
                 cache_age=cache_age,
